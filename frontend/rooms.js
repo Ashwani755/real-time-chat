@@ -46,6 +46,8 @@
     joinBtnSpinner: document.querySelector('#join-btn .btn-spinner'),
     joinError: document.getElementById('join-error'),
     presetButtons: document.querySelectorAll('.room-preset-btn'),
+    joinAvatarPreview: document.getElementById('join-avatar-preview'),
+    avatarSubText: document.getElementById('avatar-sub-text'),
 
     // Chat Header Elements
     roomDisplayName: document.getElementById('room-display-name'),
@@ -646,6 +648,30 @@
         b.classList.remove('selected');
       }
     });
+  });
+
+  // Live Avatar Preview on Username Input
+  elements.usernameInput.addEventListener('input', () => {
+    const val = elements.usernameInput.value.trim();
+    if (val) {
+      const initials = getUserInitials(val);
+      const color = getUserColor(val);
+      if (elements.joinAvatarPreview) {
+        elements.joinAvatarPreview.textContent = initials;
+        elements.joinAvatarPreview.style.background = `linear-gradient(135deg, ${color}, #06b6d4)`;
+      }
+      if (elements.avatarSubText) {
+        elements.avatarSubText.textContent = `Handle: @${val}`;
+      }
+    } else {
+      if (elements.joinAvatarPreview) {
+        elements.joinAvatarPreview.textContent = '?';
+        elements.joinAvatarPreview.style.background = 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)';
+      }
+      if (elements.avatarSubText) {
+        elements.avatarSubText.textContent = 'Enter username to personalize';
+      }
+    }
   });
 
   // Join Room Form Submit

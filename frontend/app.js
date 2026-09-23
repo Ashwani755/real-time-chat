@@ -45,6 +45,8 @@
     joinBtnText: document.querySelector('#join-btn .btn-text'),
     joinBtnSpinner: document.querySelector('#join-btn .btn-spinner'),
     joinError: document.getElementById('join-error'),
+    joinAvatarPreview: document.getElementById('join-avatar-preview'),
+    avatarSubText: document.getElementById('avatar-sub-text'),
 
     // Chat Header Elements
     connectionStatus: document.getElementById('connection-status'),
@@ -699,6 +701,30 @@
   // ==========================================================================
   // EVENT LISTENERS & FORM HANDLERS
   // ==========================================================================
+
+  // Live Avatar Preview on Username Input
+  elements.usernameInput.addEventListener('input', () => {
+    const val = elements.usernameInput.value.trim();
+    if (val) {
+      const initials = getUserInitials(val);
+      const color = getUserColor(val);
+      if (elements.joinAvatarPreview) {
+        elements.joinAvatarPreview.textContent = initials;
+        elements.joinAvatarPreview.style.background = `linear-gradient(135deg, ${color}, #6366f1)`;
+      }
+      if (elements.avatarSubText) {
+        elements.avatarSubText.textContent = `Handle: @${val}`;
+      }
+    } else {
+      if (elements.joinAvatarPreview) {
+        elements.joinAvatarPreview.textContent = '?';
+        elements.joinAvatarPreview.style.background = 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)';
+      }
+      if (elements.avatarSubText) {
+        elements.avatarSubText.textContent = 'Enter username to personalize';
+      }
+    }
+  });
 
   // Handle Join Form Submit
   elements.joinForm.addEventListener('submit', (e) => {

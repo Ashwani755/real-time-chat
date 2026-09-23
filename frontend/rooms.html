@@ -14,20 +14,56 @@
 
     <!-- ================= JOIN / ROOM SELECTION SCREEN ================= -->
     <section id="join-screen" class="screen active">
-      <div class="join-card">
+      <!-- Ambient Colorful Glow Orbs -->
+      <div class="ambient-glow glow-1"></div>
+      <div class="ambient-glow glow-2"></div>
+      <div class="ambient-glow glow-3"></div>
+
+      <!-- Floating Decorative Room Bubbles -->
+      <div class="floating-bubble bubble-left-top">
+        <span class="bubble-avatar" style="background: linear-gradient(135deg, #6366f1, #a855f7);">#D</span>
+        <div class="bubble-content">
+          <span class="bubble-user">#dev-team</span>
+          <span class="bubble-msg">Sprint standup is starting! 💻</span>
+        </div>
+        <span class="live-dot"></span>
+      </div>
+
+      <div class="floating-bubble bubble-right-top">
+        <span class="bubble-avatar" style="background: linear-gradient(135deg, #06b6d4, #10b981);">#P</span>
+        <div class="bubble-content">
+          <span class="bubble-user">#project-hub</span>
+          <span class="bubble-msg">Docs updated for review 📄</span>
+        </div>
+      </div>
+
+      <div class="floating-bubble bubble-left-bottom">
+        <span class="bubble-avatar" style="background: linear-gradient(135deg, #f43f5e, #fb923c);">#R</span>
+        <div class="bubble-content">
+          <span class="bubble-user">#random</span>
+          <span class="bubble-msg">Coffee break anyone? ☕</span>
+        </div>
+      </div>
+
+      <div class="join-card glassmorphism">
         <div class="brand-header">
-          <div class="brand-icon">
-            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-              <circle cx="9" cy="7" r="4"></circle>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-            </svg>
+          <div class="brand-icon-wrapper">
+            <div class="brand-icon gradient-glow-rooms">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <span class="status-pulse-badge rooms-badge">ROOMS</span>
           </div>
-          <h1>Multi-User Room Chat</h1>
-          <p class="brand-subtitle">Join dedicated chat rooms to collaborate with multiple users</p>
-          <div style="margin-top: 0.75rem;">
-            <a href="index.html" class="nav-link-btn" title="Back to Global Chat">
+
+          <h1 class="gradient-title">Multi-User Rooms</h1>
+          <p class="brand-subtitle">Collaborate in dedicated topic & team channels</p>
+          
+          <div class="hero-nav-switch">
+            <a href="index.html" class="nav-link-btn gradient-border-btn" title="Back to Global Chat">
               <span>← Switch to Global Chat</span>
             </a>
           </div>
@@ -35,10 +71,19 @@
 
         <div id="join-error" class="alert-banner hidden" role="alert"></div>
 
+        <!-- Live Avatar Identity Preview -->
+        <div class="avatar-preview-box">
+          <div class="avatar-preview" id="join-avatar-preview">?</div>
+          <div class="avatar-meta">
+            <span class="avatar-label">Your Live Profile</span>
+            <span class="avatar-sub" id="avatar-sub-text">Enter username to personalize</span>
+          </div>
+        </div>
+
         <form id="join-form" class="join-form" autocomplete="off">
           <div class="form-group">
-            <label for="username-input">Your Username</label>
-            <div class="input-wrapper">
+            <label for="username-input">Your Handle</label>
+            <div class="input-wrapper glowing-input">
               <span class="input-icon">@</span>
               <input 
                 type="text" 
@@ -53,8 +98,8 @@
           </div>
 
           <div class="form-group">
-            <label for="room-input">Room Name</label>
-            <div class="input-wrapper">
+            <label for="room-input">Room Channel</label>
+            <div class="input-wrapper glowing-input">
               <span class="input-icon">#</span>
               <input 
                 type="text" 
@@ -67,7 +112,7 @@
               >
             </div>
             
-            <span class="room-presets-label">Popular Preset Rooms:</span>
+            <span class="room-presets-label">Popular Preset Channels:</span>
             <div class="room-presets-grid">
               <button type="button" class="room-preset-btn selected" data-room="general">
                 <span class="room-hash">#</span> general
@@ -85,7 +130,7 @@
           </div>
 
           <details class="server-config-toggle">
-            <summary>Advanced Server Settings</summary>
+            <summary>⚙️ Advanced Server Settings</summary>
             <div class="form-group config-field">
               <label for="server-url-input">WebSocket Base URL</label>
               <input 
@@ -99,10 +144,17 @@
             </div>
           </details>
 
-          <button type="submit" id="join-btn" class="btn btn-primary btn-block">
-            <span class="btn-text">Join Room</span>
+          <button type="submit" id="join-btn" class="btn btn-vibrant btn-block">
+            <span class="btn-text">🚀 Join Channel Room</span>
             <span class="btn-spinner hidden"></span>
           </button>
+
+          <!-- Feature Pills -->
+          <div class="feature-pills">
+            <span class="pill">👥 Multi-User</span>
+            <span class="pill">#️⃣ Unlimited Rooms</span>
+            <span class="pill">⚡ Real-Time</span>
+          </div>
         </form>
       </div>
     </section>

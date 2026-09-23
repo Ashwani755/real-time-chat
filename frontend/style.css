@@ -85,55 +85,335 @@ html, body {
 }
 
 /* ==========================================================================
-   JOIN / LOGIN SCREEN
+   JOIN / LOGIN SCREEN (COLORFUL & MODERN CHAT VIBES)
    ========================================================================== */
 #join-screen {
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #0f172a 70%);
+  background: radial-gradient(circle at 10% 20%, #1e1b4b 0%, #0f172a 50%, #020617 100%);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Ambient Glowing Orbs */
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  opacity: 0.6;
+  animation: floatOrb 12s ease-in-out infinite alternate;
+}
+
+.glow-1 {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, #6366f1 0%, #4338ca00 70%);
+  top: -60px;
+  left: -80px;
+}
+
+.glow-2 {
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, #ec4899 0%, #d946ef00 70%);
+  bottom: -100px;
+  right: -100px;
+  animation-duration: 16s;
+}
+
+.glow-3 {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, #06b6d4 0%, #0284c700 70%);
+  top: 40%;
+  right: 15%;
+  animation-duration: 10s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, 40px) scale(1.1); }
+  100% { transform: translate(-20px, -30px) scale(0.95); }
+}
+
+/* Floating Real-Time Chat Bubbles */
+.floating-bubble {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  pointer-events: none;
+  animation: floatBubble 6s ease-in-out infinite;
+}
+
+.bubble-left-top {
+  top: 14%;
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.bubble-right-top {
+  top: 18%;
+  right: 9%;
+  animation-delay: 1.5s;
+}
+
+.bubble-left-bottom {
+  bottom: 14%;
+  left: 10%;
+  animation-delay: 3s;
+}
+
+@keyframes floatBubble {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.bubble-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+}
+
+.bubble-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.bubble-user {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #94a3b8;
+  line-height: 1.2;
+}
+
+.bubble-msg {
+  font-size: 0.8rem;
+  color: #f8fafc;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+/* Glassmorphism Join Card */
 .join-card {
   width: 100%;
-  max-width: 440px;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-color);
+  max-width: 460px;
+  background: rgba(30, 41, 59, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-lg);
   padding: 2.25rem 2rem;
-  box-shadow: var(--shadow-lg);
-  animation: fadeIn 0.3s ease-out;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 40px rgba(99, 102, 241, 0.15);
+  animation: fadeIn 0.4s ease-out;
+  position: relative;
+  z-index: 5;
 }
 
 .brand-header {
   text-align: center;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
-.brand-icon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 1rem;
-  background: linear-gradient(135deg, var(--primary) 0%, #818cf8 100%);
+.brand-icon-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.brand-icon.gradient-glow {
+  width: 62px;
+  height: 62px;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
   color: white;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+  box-shadow: 0 8px 24px rgba(168, 85, 247, 0.45);
 }
 
-.brand-header h1 {
-  font-size: 1.625rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 0.35rem;
-  color: var(--text-main);
+.brand-icon.gradient-glow-rooms {
+  width: 62px;
+  height: 62px;
+  background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%);
+  color: white;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(6, 182, 212, 0.45);
+}
+
+.status-pulse-badge {
+  position: absolute;
+  bottom: -4px;
+  right: -8px;
+  background: #10b981;
+  color: #064e3b;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-full);
+  border: 2px solid #1e293b;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulseBadge 2s infinite;
+}
+
+.status-pulse-badge.rooms-badge {
+  background: #38bdf8;
+  color: #0c4a6e;
+  box-shadow: 0 0 10px #38bdf8;
+}
+
+@keyframes pulseBadge {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.gradient-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 50%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.25rem;
 }
 
 .brand-subtitle {
   font-size: 0.875rem;
-  color: var(--text-muted);
+  color: #94a3b8;
+}
+
+.hero-nav-switch {
+  margin-top: 0.75rem;
+}
+
+.gradient-border-btn {
+  background: rgba(49, 46, 129, 0.4);
+  border: 1px solid rgba(129, 140, 248, 0.4);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.15);
+}
+
+.gradient-border-btn:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  border-color: #818cf8;
+  color: white;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+}
+
+/* Live Avatar Identity Box */
+.avatar-preview-box {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: 0.65rem 0.85rem;
+  margin-bottom: 1.15rem;
+  transition: all var(--transition-fast);
+}
+
+.avatar-preview {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.avatar-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar-label {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.avatar-sub {
+  font-size: 0.725rem;
+  color: #64748b;
+}
+
+/* Glowing Input Wrapper */
+.glowing-input input[type="text"]:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.28);
+}
+
+/* Vibrant Action Button */
+.btn-vibrant {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+  transition: all var(--transition-fast);
+}
+
+.btn-vibrant:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #c026d3 100%);
+  box-shadow: 0 8px 26px rgba(139, 92, 246, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Feature Highlights Pills */
+.feature-pills {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.feature-pills .pill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
 }
 
 /* Form Controls */

@@ -14,28 +14,74 @@
 
     <!-- ================= JOIN / LOGIN SCREEN ================= -->
     <section id="join-screen" class="screen active">
-      <div class="join-card">
+      <!-- Ambient Colorful Glow Orbs -->
+      <div class="ambient-glow glow-1"></div>
+      <div class="ambient-glow glow-2"></div>
+      <div class="ambient-glow glow-3"></div>
+
+      <!-- Floating Decorative Chat Bubbles (Real-Time Chat Vibes) -->
+      <div class="floating-bubble bubble-left-top">
+        <span class="bubble-avatar" style="background: linear-gradient(135deg, #10b981, #06b6d4);">JD</span>
+        <div class="bubble-content">
+          <span class="bubble-user">John Doe</span>
+          <span class="bubble-msg">Hey everyone! 👋</span>
+        </div>
+        <span class="live-dot"></span>
+      </div>
+
+      <div class="floating-bubble bubble-right-top">
+        <span class="bubble-avatar" style="background: linear-gradient(135deg, #ec4899, #8b5cf6);">SA</span>
+        <div class="bubble-content">
+          <span class="bubble-user">Sarah</span>
+          <span class="bubble-msg">Connected via WebSocket ⚡</span>
+        </div>
+      </div>
+
+      <div class="floating-bubble bubble-left-bottom">
+        <span class="bubble-avatar" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">AL</span>
+        <div class="bubble-content">
+          <span class="bubble-user">Alex</span>
+          <span class="bubble-msg">Ready for the team sync! 🚀</span>
+        </div>
+      </div>
+
+      <div class="join-card glassmorphism">
         <div class="brand-header">
-          <div class="brand-icon">
-            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
+          <div class="brand-icon-wrapper">
+            <div class="brand-icon gradient-glow">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </div>
+            <span class="status-pulse-badge">LIVE</span>
           </div>
-          <h1>Real-Time Chat</h1>
-          <p class="brand-subtitle">Fast, event-driven messaging powered by WebSockets</p>
-          <div style="margin-top: 0.75rem;">
-            <a href="rooms.html" class="nav-link-btn" title="Explore Multi-User Rooms">
-              <span>👥 Multi-User Room Chat →</span>
+
+          <h1 class="gradient-title">Real-Time Chat</h1>
+          <p class="brand-subtitle">Instant event-driven messaging with live presence</p>
+          
+          <div class="hero-nav-switch">
+            <a href="rooms.html" class="nav-link-btn gradient-border-btn" title="Explore Multi-User Rooms">
+              <span class="nav-icon">👥</span>
+              <span>Switch to Multi-User Rooms →</span>
             </a>
           </div>
         </div>
 
         <div id="join-error" class="alert-banner hidden" role="alert"></div>
 
+        <!-- Live Avatar Identity Preview -->
+        <div class="avatar-preview-box">
+          <div class="avatar-preview" id="join-avatar-preview">?</div>
+          <div class="avatar-meta">
+            <span class="avatar-label">Your Live Profile</span>
+            <span class="avatar-sub" id="avatar-sub-text">Enter username to personalize</span>
+          </div>
+        </div>
+
         <form id="join-form" class="join-form" autocomplete="off">
           <div class="form-group">
-            <label for="username-input">Enter your username</label>
-            <div class="input-wrapper">
+            <label for="username-input">Choose Your Handle</label>
+            <div class="input-wrapper glowing-input">
               <span class="input-icon">@</span>
               <input 
                 type="text" 
@@ -47,11 +93,11 @@
                 autofocus
               >
             </div>
-            <span class="input-hint">Use 2-25 characters. Letters, numbers, and underscores.</span>
+            <span class="input-hint">2-25 characters. Letters, numbers, and underscores.</span>
           </div>
 
           <details class="server-config-toggle">
-            <summary>Advanced Server Settings</summary>
+            <summary>⚙️ Advanced Server Settings</summary>
             <div class="form-group config-field">
               <label for="server-url-input">WebSocket Base URL</label>
               <input 
@@ -61,14 +107,21 @@
                 value="ws://localhost:8000/ws" 
                 placeholder="ws://localhost:8000/ws"
               >
-              <span class="input-hint">Will connect to <code>{base_url}/{username}</code></span>
+              <span class="input-hint">Target endpoint: <code>{base_url}/{username}</code></span>
             </div>
           </details>
 
-          <button type="submit" id="join-btn" class="btn btn-primary btn-block">
-            <span class="btn-text">Join Chat Room</span>
+          <button type="submit" id="join-btn" class="btn btn-vibrant btn-block">
+            <span class="btn-text">🚀 Launch Chat</span>
             <span class="btn-spinner hidden"></span>
           </button>
+
+          <!-- Feature Pills -->
+          <div class="feature-pills">
+            <span class="pill">⚡ Ultra Fast</span>
+            <span class="pill">🟢 Live Presence</span>
+            <span class="pill">📜 Chat History</span>
+          </div>
         </form>
       </div>
     </section>
