@@ -2,13 +2,15 @@
 Automated Test Suite for Real-Time Chat Backend & WebSocket Server.
 
 Tests:
-- Root, Health, and Online Users HTTP Endpoints.
+- Serving of frontend static files (HTML, CSS, JS).
+- API Status, Health, and Online Users HTTP Endpoints.
 - Single user connection lifecycle (online_users, chat_history, user_joined).
 - Real-time message exchange and broadcast across multiple users.
 - Message validation (empty / whitespace messages).
 - Payload error handling (malformed JSON, invalid format, unknown message types).
 - User disconnection and presence tracking (user_left, online_users update).
-- Duplicate username rejection.
+- Duplicate username rejection per room.
+- Multi-room WebSocket partitioning (/ws/{room}/{username}).
 - Integration hooks for Member 3 (SQLite / MQTT callbacks).
 """
 
@@ -22,25 +24,37 @@ from backend.websocket_manager import manager
 @pytest.fixture(autouse=True)
 def reset_manager_state():
     """Ensure manager state is clear before each test."""
-    manager.active_connections.clear()
-    manager.message_handlers.clear()
-    manager.user_join_handlers.clear()
-    manager.user_leave_handlers.clear()
+    manager.clear()
     yield
-    manager.active_connections.clear()
-    manager.message_handlers.clear()
-    manager.user_join_handlers.clear()
-    manager.user_leave_handlers.clear()
+    manager.clear()
 
 
-def test_root_endpoint():
-    """Test the root HTTP endpoint returns service metadata."""
+def test_root_serves_frontend_html():
+    """Test the root HTTP endpoint serves frontend index.html with 200 OK."""
     client = TestClient(app)
     response = client.get("/")
     assert response.status_code == 200
+    assert "text/html" in response.headers.get("content-type", "")
+    assert "Real-Time Chat" in response.text
+    assert "app.js" in response.text
+
+
+def test_rooms_html_served():
+    """Test /rooms.html is accessible and served by backend."""
+    client = TestClient(app)
+    response = client.get("/rooms.html")
+    assert response.status_code == 200
+    assert "rooms.js" in response.text
+
+
+def test_api_status_endpoint():
+    """Test the /api/status HTTP endpoint returns JSON metadata."""
+    client = TestClient(app)
+    response = client.get("/api/status")
+    assert response.status_code == 200
     data = response.json()
     assert data["status"] == "running"
-    assert "websocket_endpoint" in data
+    assert "endpoints" in data
 
 
 def test_health_endpoint():
@@ -244,20 +258,59 @@ def test_user_leave_event():
         assert users_msg["data"]["users"] == ["Alice"]
 
 
+def test_multi_room_partitioning():
+    """Test that users in different rooms are isolated from each other's messages."""
+    client = TestClient(app)
+
+    # Alice connects to #gaming
+    with client.websocket_connect("/ws/gaming/Alice") as ws_alice:
+        for _ in range(4):
+            ws_alice.receive_json()
+
+        # Bob connects to #tech
+        with client.websocket_connect("/ws/tech/Bob") as ws_bob:
+            for _ in range(4):
+                ws_bob.receive_json()
+
+            # Charlie connects to #gaming (same room as Alice)
+            with client.websocket_connect("/ws/gaming/Charlie") as ws_charlie:
+                # Alice receives Charlie's join notification in #gaming
+                alice_join = ws_alice.receive_json()
+                assert alice_join["type"] == "user_joined"
+                assert alice_join["data"]["username"] == "Charlie"
+                assert alice_join["data"]["room"] == "gaming"
+
+                # Drain Charlie's initial messages
+                for _ in range(4):
+                    ws_charlie.receive_json()
+
+                # Alice sends message in #gaming
+                ws_alice.send_json({
+                    "type": "chat_message",
+                    "data": {"message": "GG everyone!"}
+                })
+
+                # Charlie in #gaming receives it
+                charlie_msg = ws_charlie.receive_json()
+                assert charlie_msg["type"] == "chat_message"
+                assert charlie_msg["data"]["message"] == "GG everyone!"
+                assert charlie_msg["data"]["room"] == "gaming"
+
+
 def test_member3_integration_hooks():
     """Test registration and asynchronous triggering of Member 3 hooks."""
     recorded_messages = []
     recorded_joins = []
     recorded_leaves = []
 
-    async def sample_msg_hook(username, message, msg_id, timestamp):
-        recorded_messages.append({"username": username, "message": message, "id": msg_id, "ts": timestamp})
+    async def sample_msg_hook(username, message, msg_id, timestamp, room="general"):
+        recorded_messages.append({"username": username, "message": message, "id": msg_id, "ts": timestamp, "room": room})
 
-    async def sample_join_hook(username, timestamp):
-        recorded_joins.append({"username": username, "ts": timestamp})
+    async def sample_join_hook(username, timestamp, room="general"):
+        recorded_joins.append({"username": username, "ts": timestamp, "room": room})
 
-    async def sample_leave_hook(username, timestamp):
-        recorded_leaves.append({"username": username, "ts": timestamp})
+    async def sample_leave_hook(username, timestamp, room="general"):
+        recorded_leaves.append({"username": username, "ts": timestamp, "room": room})
 
     manager.register_on_message(sample_msg_hook)
     manager.register_on_user_join(sample_join_hook)
