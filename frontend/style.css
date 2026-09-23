@@ -863,3 +863,101 @@ input[type="text"]::placeholder {
     max-width: 80px;
   }
 }
+
+/* ==========================================================================
+   MULTI-USER ROOM CHAT SPECIFIC STYLES
+   ========================================================================== */
+.nav-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-sm);
+  background-color: #312e8140;
+  border: 1px solid #4338ca50;
+  color: #c7d2fe;
+  font-size: 0.825rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.nav-link-btn:hover {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.room-presets-label {
+  font-size: 0.775rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.25rem;
+}
+
+.room-presets-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.room-preset-btn {
+  background-color: #0f172a;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.825rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all var(--transition-fast);
+  font-family: inherit;
+  text-align: left;
+}
+
+.room-preset-btn:hover {
+  background-color: var(--bg-surface-elevated);
+  border-color: var(--border-focus);
+  color: var(--text-main);
+}
+
+.room-preset-btn.selected {
+  background-color: #312e8160;
+  border-color: var(--primary);
+  color: #e0e7ff;
+  font-weight: 600;
+}
+
+.room-hash {
+  color: #818cf8;
+  font-weight: 700;
+}
+
+.room-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background-color: #312e8140;
+  border: 1px solid #4338ca60;
+  color: #a5b4fc;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.room-context-pill {
+  font-size: 0.7rem;
+  background-color: #334155;
+  color: #94a3b8;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius-sm);
+  margin-left: 0.4rem;
+}

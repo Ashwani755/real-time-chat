@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-Time Chat</title>
+  <title>Real-Time Chat - Multi-User Rooms</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,20 +12,23 @@
 <body>
   <div id="app" class="app-container">
 
-    <!-- ================= JOIN / LOGIN SCREEN ================= -->
+    <!-- ================= JOIN / ROOM SELECTION SCREEN ================= -->
     <section id="join-screen" class="screen active">
       <div class="join-card">
         <div class="brand-header">
           <div class="brand-icon">
             <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
             </svg>
           </div>
-          <h1>Real-Time Chat</h1>
-          <p class="brand-subtitle">Fast, event-driven messaging powered by WebSockets</p>
+          <h1>Multi-User Room Chat</h1>
+          <p class="brand-subtitle">Join dedicated chat rooms to collaborate with multiple users</p>
           <div style="margin-top: 0.75rem;">
-            <a href="rooms.html" class="nav-link-btn" title="Explore Multi-User Rooms">
-              <span>👥 Multi-User Room Chat →</span>
+            <a href="index.html" class="nav-link-btn" title="Back to Global Chat">
+              <span>← Switch to Global Chat</span>
             </a>
           </div>
         </div>
@@ -34,7 +37,7 @@
 
         <form id="join-form" class="join-form" autocomplete="off">
           <div class="form-group">
-            <label for="username-input">Enter your username</label>
+            <label for="username-input">Your Username</label>
             <div class="input-wrapper">
               <span class="input-icon">@</span>
               <input 
@@ -47,7 +50,38 @@
                 autofocus
               >
             </div>
-            <span class="input-hint">Use 2-25 characters. Letters, numbers, and underscores.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="room-input">Room Name</label>
+            <div class="input-wrapper">
+              <span class="input-icon">#</span>
+              <input 
+                type="text" 
+                id="room-input" 
+                name="room" 
+                value="general" 
+                placeholder="e.g. general, dev-team, gaming" 
+                maxlength="30" 
+                required
+              >
+            </div>
+            
+            <span class="room-presets-label">Popular Preset Rooms:</span>
+            <div class="room-presets-grid">
+              <button type="button" class="room-preset-btn selected" data-room="general">
+                <span class="room-hash">#</span> general
+              </button>
+              <button type="button" class="room-preset-btn" data-room="dev-team">
+                <span class="room-hash">#</span> dev-team
+              </button>
+              <button type="button" class="room-preset-btn" data-room="project-hub">
+                <span class="room-hash">#</span> project-hub
+              </button>
+              <button type="button" class="room-preset-btn" data-room="random">
+                <span class="room-hash">#</span> random
+              </button>
+            </div>
           </div>
 
           <details class="server-config-toggle">
@@ -61,24 +95,24 @@
                 value="ws://localhost:8000/ws" 
                 placeholder="ws://localhost:8000/ws"
               >
-              <span class="input-hint">Will connect to <code>{base_url}/{username}</code></span>
+              <span class="input-hint">Default connection: <code>{base_url}/{room}/{username}</code></span>
             </div>
           </details>
 
           <button type="submit" id="join-btn" class="btn btn-primary btn-block">
-            <span class="btn-text">Join Chat Room</span>
+            <span class="btn-text">Join Room</span>
             <span class="btn-spinner hidden"></span>
           </button>
         </form>
       </div>
     </section>
 
-    <!-- ================= MAIN CHAT SCREEN ================= -->
+    <!-- ================= MAIN ROOM CHAT SCREEN ================= -->
     <section id="chat-screen" class="screen hidden">
       <!-- Chat Header -->
       <header class="chat-header">
         <div class="chat-header-left">
-          <button id="toggle-sidebar-btn" class="icon-btn mobile-only" aria-label="Toggle Online Users">
+          <button id="toggle-sidebar-btn" class="icon-btn mobile-only" aria-label="Toggle Online Room Members">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -88,37 +122,37 @@
           <div class="header-brand">
             <div class="header-status-indicator online"></div>
             <div>
-              <h2>Global Chat Room</h2>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <h2 id="room-display-name">#general</h2>
+                <span class="room-header-badge" id="room-badge">Room Chat</span>
+              </div>
               <p class="connection-status" id="connection-status">Connected</p>
             </div>
           </div>
         </div>
 
         <div class="chat-header-right">
-          <a href="rooms.html" class="nav-link-btn" title="Explore Multi-User Rooms">
-            <span>Rooms</span>
-          </a>
           <div class="current-user-badge">
             <div class="avatar avatar-sm" id="current-user-avatar">?</div>
             <span class="current-user-name" id="current-user-name">User</span>
           </div>
-          <button id="leave-btn" class="btn btn-secondary btn-sm" title="Leave Chat">
+          <button id="leave-btn" class="btn btn-secondary btn-sm" title="Leave Room">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
               <polyline points="16 17 21 12 16 7"></polyline>
               <line x1="21" y1="12" x2="9" y2="12"></line>
             </svg>
-            <span>Leave</span>
+            <span>Leave Room</span>
           </button>
         </div>
       </header>
 
       <!-- Chat Body -->
       <div class="chat-body">
-        <!-- Online Users Sidebar -->
+        <!-- Room Users Sidebar -->
         <aside id="online-users-sidebar" class="sidebar">
           <div class="sidebar-header">
-            <h3>Online Users</h3>
+            <h3>Room Members</h3>
             <span class="user-count-badge" id="online-count">0</span>
           </div>
           <div class="sidebar-content">
@@ -131,16 +165,16 @@
         <!-- Sidebar overlay for mobile -->
         <div id="sidebar-overlay" class="sidebar-overlay hidden"></div>
 
-        <!-- Chat Main Area -->
+        <!-- Room Chat Main Area -->
         <main class="chat-main">
-          <!-- Notification Toast (for errors/alerts during active session) -->
+          <!-- Notification Toast -->
           <div id="chat-alert" class="chat-alert hidden" role="alert"></div>
 
           <!-- Messages Container -->
           <div id="messages-container" class="messages-container">
             <div id="empty-state" class="empty-state">
-              <div class="empty-icon">💬</div>
-              <p>No messages yet. Send a message to start the conversation!</p>
+              <div class="empty-icon">👥</div>
+              <p id="empty-state-text">Welcome to the room! Be the first to start the conversation.</p>
             </div>
             <!-- Messages rendered dynamically -->
           </div>
@@ -160,7 +194,7 @@
                 <input 
                   type="text" 
                   id="message-input" 
-                  placeholder="Type a message..." 
+                  placeholder="Message #general..." 
                   maxlength="2000"
                   required
                 >
@@ -180,6 +214,6 @@
 
   </div>
 
-  <script src="app.js"></script>
+  <script src="rooms.js"></script>
 </body>
 </html>
