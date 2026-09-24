@@ -78,8 +78,8 @@
   };
 
   const AVATAR_COLORS = [
-    '#ef4444', '#f97316', '#f59e0b', '#10b981', '#06b6d4',
-    '#3b82f6', '#6366f1', '#8b5cf6', '#ec4899', '#14b8a6'
+    '#2d6a4f', '#bc6c25', '#40916c', '#d4a373', '#1b4332',
+    '#52b788', '#9c6644', '#588157', '#3a5a40', '#a3b18a'
   ];
 
   // ==========================================================================
@@ -658,7 +658,7 @@
       const color = getUserColor(val);
       if (elements.joinAvatarPreview) {
         elements.joinAvatarPreview.textContent = initials;
-        elements.joinAvatarPreview.style.background = `linear-gradient(135deg, ${color}, #10b981)`;
+        elements.joinAvatarPreview.style.background = `linear-gradient(135deg, ${color}, #52b788)`;
       }
       if (elements.avatarSubText) {
         elements.avatarSubText.textContent = `Handle: @${val}`;
@@ -666,7 +666,7 @@
     } else {
       if (elements.joinAvatarPreview) {
         elements.joinAvatarPreview.textContent = '?';
-        elements.joinAvatarPreview.style.background = 'linear-gradient(135deg, #1877f2 0%, #25d366 100%)';
+        elements.joinAvatarPreview.style.background = 'linear-gradient(135deg, #1b4332 0%, #40916c 100%)';
       }
       if (elements.avatarSubText) {
         elements.avatarSubText.textContent = 'Enter username to personalize';
