@@ -1,294 +1,257 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="nebula">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Real-Time Chat | Spatial Channels</title>
+  <title>Real-Time Chat - Multi-User Rooms</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Interactive Starlight / Neural Constellation Canvas -->
-  <canvas id="matrix-canvas"></canvas>
-
-  <!-- Volumetric Ambient Light Overlays -->
-  <div class="ambient-holo-orb orb-1"></div>
-  <div class="ambient-holo-orb orb-2"></div>
-  <div class="ambient-holo-orb orb-3"></div>
-
   <div id="app" class="app-container">
 
-    <!-- ================= JOIN / ROOM SELECTION SCREEN (3D HOLOGRAPHIC) ================= -->
+    <!-- ================= JOIN / ROOM SELECTION SCREEN ================= -->
     <section id="join-screen" class="screen active">
-      <!-- Floating Holographic Badges -->
-      <div class="floating-holo-tag holo-tag-1">
-        <span class="holo-badge-dot"></span>
-        <span>PORTAL SECTOR ⚡</span>
+      <!-- Sunlit Dappled Glow Orbs (Komorebi Forest Canopy) -->
+      <div class="ambient-glow glow-1"></div>
+      <div class="ambient-glow glow-2"></div>
+      <div class="ambient-glow glow-3"></div>
+
+      <!-- Floating Decorative Room Bubbles (Realistic Botanical Nature) -->
+      <div class="floating-bubble bubble-left-top">
+        <span class="bubble-avatar" style="background: linear-gradient(135deg, #2d6a4f, #52b788);">🌿</span>
+        <div class="bubble-content">
+          <span class="bubble-user">#rainforest</span>
+          <span class="bubble-msg">Canopy mist & tropical orchids 🌸</span>
+        </div>
+        <span class="live-dot"></span>
       </div>
 
-      <div class="floating-holo-tag holo-tag-2">
-        <span>🌌 QUANTUM ENCRYPTION</span>
-        <span class="holo-badge-dot" style="background: var(--neon-magenta); box-shadow: 0 0 10px var(--neon-magenta);"></span>
+      <div class="floating-bubble bubble-right-top">
+        <span class="bubble-avatar" style="background: linear-gradient(135deg, #1b4332, #40916c);">🌲</span>
+        <div class="bubble-content">
+          <span class="bubble-user" style="color: #1b4332;">#pine-valley</span>
+          <span class="bubble-msg">Fresh mountain breeze & tall pines 🏔️</span>
+        </div>
       </div>
 
-      <div class="floating-holo-tag holo-tag-3">
-        <span class="holo-badge-dot" style="background: var(--neon-violet); box-shadow: 0 0 10px var(--neon-violet);"></span>
-        <span>MULTI-DIMENSIONAL 🛸</span>
+      <div class="floating-bubble bubble-left-bottom">
+        <span class="bubble-avatar" style="background: linear-gradient(135deg, #bc6c25, #dda15e);">🪵</span>
+        <div class="bubble-content">
+          <span class="bubble-user" style="color: #934c11;">#campfire</span>
+          <span class="bubble-msg">Crackling fire under the night stars ✨</span>
+        </div>
       </div>
 
-      <!-- 3D Parallax Tilt Deck -->
-      <div class="holo-card-deck" id="parallax-card">
-        <div class="holo-card-inner">
-          <div class="brand-holo-header">
-            <div class="brand-cyber-symbol" style="border-color: rgba(168, 85, 247, 0.6); box-shadow: 0 0 30px var(--neon-violet-glow);">
-              <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+      <div class="join-card glassmorphism">
+        <div class="brand-header">
+          <div class="brand-icon-wrapper">
+            <div class="brand-icon gradient-glow-rooms">
+              <svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.5 1.4 10.2A7 7 0 0 1 11 20z"></path>
+                <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
               </svg>
             </div>
-
-            <h1 class="holo-glitch-title">SPATIAL SECTORS</h1>
-            <p class="holo-subtitle">Choose a quantum frequency channel to synchronize</p>
-            
-            <div class="portal-switch-bar">
-              <a href="index.html" class="portal-nav-btn" title="Back to Global Matrix">
-                <span>← Back to Global Matrix</span>
-              </a>
-            </div>
+            <span class="status-pulse-badge rooms-badge">NATURE 🌿</span>
           </div>
 
-          <div id="join-error" class="alert-banner error hidden" role="alert"></div>
-
-          <!-- Holographic Avatar Preview -->
-          <div class="avatar-hologram-box">
-            <div class="hologram-avatar" id="join-avatar-preview">?</div>
-            <div class="hologram-meta">
-              <span class="hologram-label">Pilot Identity</span>
-              <span class="hologram-sub" id="avatar-sub-text">Enter callsign to calibrate beacon</span>
-            </div>
+          <h1 class="gradient-title">Nature Channels</h1>
+          <p class="brand-subtitle">Collaborate in serene botanical & outdoor channels</p>
+          
+          <div class="hero-nav-switch">
+            <a href="index.html" class="nav-link-btn gradient-border-btn" title="Back to Nature Chat">
+              <span>← Switch to Nature Chat</span>
+            </a>
           </div>
-
-          <form id="join-form" class="join-form" autocomplete="off">
-            <div class="form-group">
-              <label for="username-input">YOUR CALLSIGN</label>
-              <div class="cyber-input-wrapper">
-                <span class="cyber-input-prefix">@</span>
-                <input 
-                  type="text" 
-                  id="username-input" 
-                  name="username" 
-                  placeholder="e.g. NeoCommander" 
-                  maxlength="25" 
-                  required 
-                  autofocus
-                >
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label for="room-input">SPATIAL SECTOR FREQUENCY</label>
-              <div class="cyber-input-wrapper">
-                <span class="cyber-input-prefix">#</span>
-                <input 
-                  type="text" 
-                  id="room-input" 
-                  name="room" 
-                  value="quantum-core" 
-                  placeholder="e.g. quantum-core" 
-                  maxlength="30" 
-                  required
-                >
-              </div>
-              
-              <!-- Quick Room Frequency Portals -->
-              <div class="room-preset-grid">
-                <button type="button" class="room-preset-btn active" data-room="quantum-core">
-                  <span>⚛️</span>
-                  <span>#quantum-core</span>
-                </button>
-                <button type="button" class="room-preset-btn" data-room="cyber-deck">
-                  <span>⚡</span>
-                  <span>#cyber-deck</span>
-                </button>
-                <button type="button" class="room-preset-btn" data-room="hyper-lounge">
-                  <span>🛸</span>
-                  <span>#hyper-lounge</span>
-                </button>
-                <button type="button" class="room-preset-btn" data-room="neon-arcade">
-                  <span>👾</span>
-                  <span>#neon-arcade</span>
-                </button>
-              </div>
-            </div>
-
-            <details class="server-config-toggle">
-              <summary>⚙️ Advanced Server Gateway</summary>
-              <div class="form-group config-field">
-                <label for="server-url-input">Base Gateway URL</label>
-                <div class="cyber-input-wrapper">
-                  <input 
-                    type="text" 
-                    id="server-url-input" 
-                    name="serverUrl" 
-                    value="ws://localhost:8000/ws" 
-                    placeholder="ws://localhost:8000/ws"
-                  >
-                </div>
-                <span class="input-hint">Target endpoint: <code>{base_url}/{room}/{username}</code></span>
-              </div>
-            </details>
-
-            <button type="submit" id="join-btn" class="cyber-launch-btn">
-              <span class="btn-text">WARP TO SECTOR 🛸</span>
-              <span class="btn-spinner hidden"></span>
-            </button>
-
-            <!-- Feature Pills -->
-            <div class="feature-matrix-pills">
-              <span class="cyber-pill">⚛️ Quantum Channels</span>
-              <span class="cyber-pill">👥 Multi-Node Sync</span>
-              <span class="cyber-pill">🔒 Isolated Streams</span>
-            </div>
-          </form>
         </div>
+
+        <div id="join-error" class="alert-banner hidden" role="alert"></div>
+
+        <!-- Live Avatar Identity Preview -->
+        <div class="avatar-preview-box">
+          <div class="avatar-preview" id="join-avatar-preview">?</div>
+          <div class="avatar-meta">
+            <span class="avatar-label">Your Nature Profile</span>
+            <span class="avatar-sub" id="avatar-sub-text">Enter handle to personalize</span>
+          </div>
+        </div>
+
+        <form id="join-form" class="join-form" autocomplete="off">
+          <div class="form-group">
+            <label for="username-input">Your Handle</label>
+            <div class="input-wrapper glowing-input">
+              <span class="input-icon">@</span>
+              <input 
+                type="text" 
+                id="username-input" 
+                name="username" 
+                placeholder="e.g. CedarHiker" 
+                maxlength="25" 
+                required 
+                autofocus
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="room-input">Nature Channel</label>
+            <div class="input-wrapper glowing-input">
+              <span class="input-icon">#</span>
+              <input 
+                type="text" 
+                id="room-input" 
+                name="room" 
+                value="rainforest" 
+                placeholder="e.g. rainforest, pine-valley, campfire" 
+                maxlength="30" 
+                required
+              >
+            </div>
+            
+            <span class="room-presets-label">Popular Nature Channels:</span>
+            <div class="room-presets-grid">
+              <button type="button" class="room-preset-btn selected" data-room="rainforest">
+                <span class="room-hash">#</span> rainforest
+              </button>
+              <button type="button" class="room-preset-btn" data-room="pine-valley">
+                <span class="room-hash">#</span> pine-valley
+              </button>
+              <button type="button" class="room-preset-btn" data-room="alpine-meadow">
+                <span class="room-hash">#</span> alpine-meadow
+              </button>
+              <button type="button" class="room-preset-btn" data-room="campfire">
+                <span class="room-hash">#</span> campfire
+              </button>
+            </div>
+          </div>
+
+          <details class="server-config-toggle">
+            <summary>⚙️ Advanced Server Settings</summary>
+            <div class="form-group config-field">
+              <label for="server-url-input">WebSocket Base URL</label>
+              <input 
+                type="text" 
+                id="server-url-input" 
+                name="serverUrl" 
+                value="ws://localhost:8000/ws" 
+                placeholder="ws://localhost:8000/ws"
+              >
+              <span class="input-hint">Default connection: <code>{base_url}/{room}/{username}</code></span>
+            </div>
+          </details>
+
+          <button type="submit" id="join-btn" class="btn btn-vibrant btn-block">
+            <span class="btn-text">🚀 Join Channel Room</span>
+            <span class="btn-spinner hidden"></span>
+          </button>
+
+          <!-- Feature Pills -->
+          <div class="feature-pills">
+            <span class="pill">👥 Multi-User</span>
+            <span class="pill">#️⃣ Unlimited Rooms</span>
+            <span class="pill">⚡ Real-Time</span>
+          </div>
+        </form>
       </div>
     </section>
 
-    <!-- ================= MAIN CHAT SCREEN (FUTURISTIC SPATIAL HUD) ================= -->
+    <!-- ================= MAIN ROOM CHAT SCREEN ================= -->
     <section id="chat-screen" class="screen hidden">
-      <!-- Cyber HUD Header -->
-      <header class="cyber-hud-header">
-        <div class="hud-left">
-          <button id="toggle-sidebar-btn" class="hud-tool-btn mobile-only" aria-label="Toggle Online Users">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+      <!-- Chat Header -->
+      <header class="chat-header">
+        <div class="chat-header-left">
+          <button id="toggle-sidebar-btn" class="icon-btn mobile-only" aria-label="Toggle Online Room Members">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
               <line x1="3" y1="12" x2="21" y2="12"></line>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <line x1="3" y1="18" x2="21" y2="18"></line>
             </svg>
           </button>
-          
-          <div class="hud-title-wrap">
-            <div class="hud-pulse-ring" style="background: var(--neon-violet); box-shadow: 0 0 12px var(--neon-violet);"></div>
+          <div class="header-brand">
+            <div class="header-status-indicator online"></div>
             <div>
-              <h2 id="room-display-name">#quantum-core</h2>
-              <span class="connection-status" id="connection-status">QUANTUM SYNC ACTIVE</span>
-            </div>
-            <!-- Live Audio Frequency Wave -->
-            <div class="cyber-audio-wave" title="Sector Frequency Wave">
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <h2 id="room-display-name">#general</h2>
+                <span class="room-header-badge" id="room-badge">Room Chat</span>
+              </div>
+              <p class="connection-status" id="connection-status">Connected</p>
             </div>
           </div>
         </div>
 
-        <div class="hud-right">
-          <!-- Theme Swapper -->
-          <button id="theme-btn" class="hud-tool-btn" title="Toggle Cyber Aesthetics">
-            <span>🎨 Theme</span>
-          </button>
-
-          <!-- Audio FX Toggle -->
-          <button id="sound-btn" class="hud-tool-btn" title="Toggle Audio FX">
-            <span id="sound-icon">🔊 SFX ON</span>
-          </button>
-
-          <!-- Global Matrix Portal Link -->
-          <a href="index.html" class="hud-tool-btn" title="Return to Global Matrix">
-            <span>Global ⚡</span>
-          </a>
-
-          <!-- User Profile Pill -->
-          <div class="hud-user-profile">
-            <div class="hud-avatar" id="current-user-avatar">?</div>
-            <span class="hud-username" id="current-user-name">User</span>
+        <div class="chat-header-right">
+          <div class="current-user-badge">
+            <div class="avatar avatar-sm" id="current-user-avatar">?</div>
+            <span class="current-user-name" id="current-user-name">User</span>
           </div>
-
-          <!-- Leave Sector Button -->
-          <button id="leave-btn" class="hud-leave-btn" title="Exit Sector Channel">
+          <button id="leave-btn" class="btn btn-secondary btn-sm" title="Leave Room">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
               <polyline points="16 17 21 12 16 7"></polyline>
               <line x1="21" y1="12" x2="9" y2="12"></line>
             </svg>
-            <span>Exit Sector</span>
+            <span>Leave Room</span>
           </button>
         </div>
       </header>
 
       <!-- Chat Body -->
       <div class="chat-body">
-        <!-- Online Nodes Sidebar -->
-        <aside id="online-users-sidebar" class="cyber-sidebar">
+        <!-- Room Users Sidebar -->
+        <aside id="online-users-sidebar" class="sidebar">
           <div class="sidebar-header">
-            <h3>Sector Pilots</h3>
-            <span class="cyber-count-badge" id="online-count">0</span>
+            <h3>Room Members</h3>
+            <span class="user-count-badge" id="online-count">0</span>
           </div>
           <div class="sidebar-content">
             <ul id="users-list" class="users-list">
-              <!-- Rendered dynamically -->
+              <!-- Populated dynamically -->
             </ul>
           </div>
         </aside>
 
-        <!-- Sidebar overlay for mobile devices -->
-        <div id="sidebar-overlay" class="sidebar-overlay"></div>
+        <!-- Sidebar overlay for mobile -->
+        <div id="sidebar-overlay" class="sidebar-overlay hidden"></div>
 
-        <!-- Chat Main Area -->
+        <!-- Room Chat Main Area -->
         <main class="chat-main">
-          <!-- Notification Alert Toast -->
+          <!-- Notification Toast -->
           <div id="chat-alert" class="chat-alert hidden" role="alert"></div>
 
-          <!-- Messages Stream Container -->
+          <!-- Messages Container -->
           <div id="messages-container" class="messages-container">
             <div id="empty-state" class="empty-state">
-              <div class="empty-icon">🛸</div>
-              <p>Frequency open. Broadcast your first transmission into this sector.</p>
+              <div class="empty-icon">👥</div>
+              <p id="empty-state-text">Welcome to the room! Be the first to start the conversation.</p>
             </div>
             <!-- Messages rendered dynamically -->
           </div>
 
-          <!-- Scroll-to-Bottom Floating Action -->
+          <!-- Auto-scroll helper button -->
           <button id="scroll-bottom-btn" class="scroll-bottom-btn hidden" aria-label="Scroll to bottom">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
-            <span>New Transmission</span>
+            <span>New messages</span>
           </button>
 
-          <!-- Holographic Message Footer -->
+          <!-- Message Input Form -->
           <footer class="chat-footer">
-            <!-- Quick Emoji Reactions HUD -->
-            <div class="quick-reaction-bar" id="quick-reaction-bar">
-              <button type="button" class="reaction-btn" data-emoji="🔥" title="Fire">🔥</button>
-              <button type="button" class="reaction-btn" data-emoji="⚡" title="Lightning">⚡</button>
-              <button type="button" class="reaction-btn" data-emoji="🚀" title="Rocket">🚀</button>
-              <button type="button" class="reaction-btn" data-emoji="💎" title="Diamond">💎</button>
-              <button type="button" class="reaction-btn" data-emoji="❤️" title="Love">❤️</button>
-              <button type="button" class="reaction-btn" data-emoji="✨" title="Sparkles">✨</button>
-              <button type="button" class="reaction-btn" data-emoji="🛸" title="UFO">🛸</button>
-              <button type="button" class="reaction-btn" data-emoji="👾" title="Alien">👾</button>
-            </div>
-
-            <!-- Input Form -->
             <form id="message-form" class="message-form" autocomplete="off">
               <div class="message-input-wrapper">
                 <input 
                   type="text" 
                   id="message-input" 
-                  placeholder="Transmit signal into sector frequency..." 
+                  placeholder="Message #general..." 
                   maxlength="2000"
                   required
                 >
               </div>
-              <button type="submit" id="send-btn" class="send-btn" aria-label="Transmit message">
-                <span class="send-btn-label">TRANSMIT</span>
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5">
+              <button type="submit" id="send-btn" class="btn btn-primary send-btn" aria-label="Send message">
+                <span class="send-btn-label">Send</span>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                   <line x1="22" y1="2" x2="11" y2="13"></line>
                   <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                 </svg>
