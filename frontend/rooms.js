@@ -152,7 +152,7 @@
     elements.chatAlert.textContent = message;
     elements.chatAlert.style.backgroundColor = isError ? 'var(--color-danger-bg)' : 'var(--bg-surface-elevated)';
     elements.chatAlert.style.borderColor = isError ? 'var(--color-danger)' : 'var(--border-color)';
-    elements.chatAlert.style.color = isError ? '#fca5a5' : 'var(--text-main)';
+    elements.chatAlert.style.color = isError ? '#b91c1c' : 'var(--text-main)';
     elements.chatAlert.classList.remove('hidden');
 
     toastTimeout = setTimeout(() => {
@@ -658,7 +658,7 @@
       const color = getUserColor(val);
       if (elements.joinAvatarPreview) {
         elements.joinAvatarPreview.textContent = initials;
-        elements.joinAvatarPreview.style.background = `linear-gradient(135deg, ${color}, #06b6d4)`;
+        elements.joinAvatarPreview.style.background = `linear-gradient(135deg, ${color}, #10b981)`;
       }
       if (elements.avatarSubText) {
         elements.avatarSubText.textContent = `Handle: @${val}`;
@@ -666,7 +666,7 @@
     } else {
       if (elements.joinAvatarPreview) {
         elements.joinAvatarPreview.textContent = '?';
-        elements.joinAvatarPreview.style.background = 'linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%)';
+        elements.joinAvatarPreview.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
       }
       if (elements.avatarSubText) {
         elements.avatarSubText.textContent = 'Enter username to personalize';
