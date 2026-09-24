@@ -666,7 +666,7 @@
     } else {
       if (elements.joinAvatarPreview) {
         elements.joinAvatarPreview.textContent = '?';
-        elements.joinAvatarPreview.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+        elements.joinAvatarPreview.style.background = 'linear-gradient(135deg, #1877f2 0%, #25d366 100%)';
       }
       if (elements.avatarSubText) {
         elements.avatarSubText.textContent = 'Enter username to personalize';

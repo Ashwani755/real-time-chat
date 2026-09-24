@@ -1,43 +1,58 @@
 /* ==========================================================================
-   CSS VARIABLES & DESIGN SYSTEM - WHITE & LIGHT GREEN THEME
+   CSS VARIABLES & DESIGN SYSTEM - WHATSAPP + FACEBOOK FUSION THEME
    ========================================================================== */
 :root {
-  /* Primary & Accent Green Palette */
-  --primary: #10b981;             /* Vibrant Emerald Green */
-  --primary-hover: #059669;       /* Deep Emerald for Hover */
-  --primary-light: #ecfdf5;       /* Ultra Soft Mint Tint */
-  --primary-dark: #02fdb6;        /* Dark Forest Green */
-  --primary-glow: rgba(16, 185, 129, 0.3);
+  /* Facebook Brand Palette */
+  --fb-blue: #1877f2;
+  --fb-blue-hover: #166fe5;
+  --fb-blue-light: #e7f3ff;
+  --fb-blue-dark: #0d65d9;
 
-  /* Light Theme Surfaces & Backgrounds */
-  --bg-app: #f0fdf4;              /* Soft Light Minty White */
-  --bg-surface: #ffffff;          /* Pure Crisp White */
-  --bg-surface-elevated: #f8fafc;  /* Clean Off-White */
-  --bg-surface-subtle: #f1f5f9;
-  --border-color: #e2e8f0;         /* Soft Gray Border */
-  --border-focus: #10b981;         /* Emerald Focus */
+  /* WhatsApp Brand Palette */
+  --wa-green: #25d366;
+  --wa-green-hover: #20ba5a;
+  --wa-green-teal: #00a884;
+  --wa-green-dark: #075e54;
+  --wa-green-light: #d9fdd3;
+  --wa-mint-tint: #ecfdf5;
+
+  /* Theme Primary (Facebook Blue) & Accent (WhatsApp Green) */
+  --primary: #1877f2;
+  --primary-hover: #166fe5;
+  --primary-light: #e7f3ff;
+  --primary-dark: #0d65d9;
+  --accent: #25d366;
+  --accent-hover: #00a884;
+
+  /* Clean Backgrounds (Facebook Canvas + Pure White Surfaces) */
+  --bg-app: #f0f2f5;              /* Facebook signature clean light canvas */
+  --bg-surface: #ffffff;          /* Pure crisp white */
+  --bg-surface-elevated: #f8fafc;
+  --bg-surface-subtle: #f0f2f5;
+  --border-color: #e4e6eb;         /* Soft Facebook border */
+  --border-focus: #1877f2;         /* Facebook Blue focus ring */
   
   /* Typography Colors */
-  --text-main: #0f172a;           /* Deep Slate for High Contrast & Readability */
-  --text-muted: #475569;          /* Medium Slate */
-  --text-dim: #94a3b8;            /* Soft Muted Gray */
+  --text-main: #050505;           /* Facebook high-contrast dark text */
+  --text-muted: #65676b;          /* Facebook secondary text */
+  --text-dim: #8a8d91;            /* Subtle placeholder text */
 
   /* Status Colors */
-  --color-online: #10b981;
-  --color-offline: #94a3b8;
-  --color-danger: #ef4444;
-  --color-danger-bg: #fef2f2;
-  --color-warning: #f59e0b;
-  --color-joined: #10b981;
-  --color-left: #f97316;
+  --color-online: #25d366;         /* WhatsApp vibrant online green */
+  --color-offline: #8a8d91;
+  --color-danger: #e41e3f;
+  --color-danger-bg: #fde8e8;
+  --color-warning: #f7b125;
+  --color-joined: #25d366;
+  --color-left: #fa3e3e;
 
-  /* Chat Bubbles (WhatsApp / Clean Modern Style) */
-  --outgoing-bg: #dcfce7;         /* Clean Light Green Bubble */
-  --outgoing-text: #064e3b;       /* Forest Green Text */
-  --outgoing-time: #059669;
-  --incoming-bg: #ffffff;         /* Crisp White Bubble */
-  --incoming-text: #0f172a;       /* Dark Text */
-  --incoming-border: #e2e8f0;
+  /* Chat Bubbles (WhatsApp light green outgoing + Facebook crisp incoming) */
+  --outgoing-bg: #d9fdd3;         /* WhatsApp iconic light green bubble */
+  --outgoing-text: #054640;       /* WhatsApp deep readable forest green */
+  --outgoing-time: #00a884;       /* WhatsApp teal timestamp */
+  --incoming-bg: #ffffff;         /* Pure crisp white bubble */
+  --incoming-text: #050505;       /* Facebook deep black text */
+  --incoming-border: #e4e6eb;
 
   /* Radii & Shadows */
   --radius-sm: 8px;
@@ -45,10 +60,10 @@
   --radius-lg: 18px;
   --radius-full: 9999px;
 
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-  --shadow-md: 0 4px 12px -2px rgba(16, 185, 129, 0.12), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 12px 28px -4px rgba(16, 185, 129, 0.16), 0 6px 12px -2px rgba(0, 0, 0, 0.05);
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 14px rgba(24, 119, 242, 0.12), 0 2px 6px rgba(37, 211, 102, 0.08);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(24, 119, 242, 0.15);
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --transition-fast: 0.15s ease;
   --transition-normal: 0.25s ease;
 }
@@ -96,39 +111,39 @@ html, body {
 }
 
 /* ==========================================================================
-   JOIN / LOGIN SCREEN (WHITE & LIGHT GREEN AESTHETIC)
+   JOIN / LOGIN SCREEN (WHATSAPP & FACEBOOK VIBRANT COMBINATION)
    ========================================================================== */
 #join-screen {
   align-items: center;
   justify-content: center;
   padding: 1.5rem;
-  background: radial-gradient(circle at 10% 20%, #d1fae5 0%, #ecfdf5 45%, #ffffff 100%);
+  background: radial-gradient(circle at 10% 20%, #e7f3ff 0%, #f0fdf4 50%, #f0f2f5 100%);
   position: relative;
   overflow: hidden;
 }
 
-/* Ambient Glowing Orbs */
+/* Ambient Glowing Orbs - Facebook Blue & WhatsApp Green */
 .ambient-glow {
   position: absolute;
   border-radius: 50%;
   filter: blur(80px);
   pointer-events: none;
-  opacity: 0.55;
+  opacity: 0.5;
   animation: floatOrb 12s ease-in-out infinite alternate;
 }
 
 .glow-1 {
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, #a7f3d0 0%, #ecfdf500 70%);
-  top: -60px;
-  left: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, #1877f2 0%, #1877f200 70%);
+  top: -80px;
+  left: -100px;
 }
 
 .glow-2 {
   width: 440px;
   height: 440px;
-  background: radial-gradient(circle, #6ee7b7 0%, #ecfdf500 70%);
+  background: radial-gradient(circle, #25d366 0%, #25d36600 70%);
   bottom: -100px;
   right: -100px;
   animation-duration: 16s;
@@ -137,8 +152,8 @@ html, body {
 .glow-3 {
   width: 320px;
   height: 320px;
-  background: radial-gradient(circle, #d9f99d 0%, #f0fdf400 70%);
-  top: 40%;
+  background: radial-gradient(circle, #00c6ff 0%, #00c6ff00 70%);
+  top: 35%;
   right: 15%;
   animation-duration: 10s;
 }
@@ -149,19 +164,19 @@ html, body {
   100% { transform: translate(-20px, -30px) scale(0.95); }
 }
 
-/* Floating Real-Time Chat Bubbles (Light Theme) */
+/* Floating Real-Time Chat Bubbles (WhatsApp & Messenger Style) */
 .floating-bubble {
   position: absolute;
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid #bbf7d0;
+  border: 1px solid #d0e3ff;
   padding: 0.6rem 1rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 10px 25px rgba(16, 185, 129, 0.12), 0 4px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 10px 25px rgba(24, 119, 242, 0.12), 0 4px 8px rgba(0, 0, 0, 0.04);
   z-index: 2;
   pointer-events: none;
   animation: floatBubble 6s ease-in-out infinite;
@@ -171,18 +186,21 @@ html, body {
   top: 14%;
   left: 8%;
   animation-delay: 0s;
+  border-color: #cbe5ff;
 }
 
 .bubble-right-top {
   top: 18%;
   right: 9%;
   animation-delay: 1.5s;
+  border-color: #bbf7d0;
 }
 
 .bubble-left-bottom {
   bottom: 14%;
   left: 10%;
   animation-delay: 3s;
+  border-color: #cbe5ff;
 }
 
 @keyframes floatBubble {
@@ -210,13 +228,13 @@ html, body {
 .bubble-user {
   font-size: 0.7rem;
   font-weight: 700;
-  color: #065f46;
+  color: #1877f2;
   line-height: 1.2;
 }
 
 .bubble-msg {
   font-size: 0.8rem;
-  color: #1e293b;
+  color: #050505;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -225,21 +243,21 @@ html, body {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #10b981;
-  box-shadow: 0 0 8px #10b981;
+  background-color: #25d366;
+  box-shadow: 0 0 8px #25d366;
 }
 
-/* Glassmorphism Join Card - White with Light Green Glow */
+/* Glassmorphism Join Card */
 .join-card {
   width: 100%;
   max-width: 460px;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid #bbf7d0;
+  border: 1px solid #d0e3ff;
   border-radius: var(--radius-lg);
   padding: 2.25rem 2rem;
-  box-shadow: 0 20px 45px rgba(16, 185, 129, 0.14), 0 4px 15px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 20px 45px rgba(24, 119, 242, 0.12), 0 4px 15px rgba(37, 211, 102, 0.08);
   animation: fadeIn 0.4s ease-out;
   position: relative;
   z-index: 5;
@@ -256,37 +274,39 @@ html, body {
   margin-bottom: 0.75rem;
 }
 
+/* Facebook to WhatsApp Gradient Brand Icon */
 .brand-icon.gradient-glow,
 .brand-icon.gradient-glow-rooms {
   width: 62px;
   height: 62px;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, #1877f2 0%, #00a884 50%, #25d366 100%);
   color: white;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 8px 24px rgba(24, 119, 242, 0.35);
 }
 
 .status-pulse-badge {
   position: absolute;
   bottom: -4px;
   right: -8px;
-  background: #10b981;
+  background: #25d366;
   color: white;
   font-size: 0.65rem;
   font-weight: 800;
   padding: 0.15rem 0.45rem;
   border-radius: var(--radius-full);
   border: 2px solid #ffffff;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
+  box-shadow: 0 0 10px rgba(37, 211, 102, 0.6);
   animation: pulseBadge 2s infinite;
 }
 
 .status-pulse-badge.rooms-badge {
-  background: #059669;
+  background: #1877f2;
   color: white;
+  box-shadow: 0 0 10px rgba(24, 119, 242, 0.6);
 }
 
 @keyframes pulseBadge {
@@ -294,11 +314,12 @@ html, body {
   50% { transform: scale(1.08); }
 }
 
+/* Facebook Blue to WhatsApp Green Title */
 .gradient-title {
   font-size: 1.75rem;
   font-weight: 800;
   letter-spacing: -0.025em;
-  background: linear-gradient(135deg, #065f46 0%, #047857 50%, #10b981 100%);
+  background: linear-gradient(135deg, #1877f2 0%, #00a884 50%, #25d366 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.25rem;
@@ -306,7 +327,7 @@ html, body {
 
 .brand-subtitle {
   font-size: 0.875rem;
-  color: #475569;
+  color: #65676b;
 }
 
 .hero-nav-switch {
@@ -314,17 +335,17 @@ html, body {
 }
 
 .gradient-border-btn {
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  color: #065f46;
-  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.1);
+  background: #e7f3ff;
+  border: 1px solid #cbe5ff;
+  color: #1877f2;
+  box-shadow: 0 2px 6px rgba(24, 119, 242, 0.1);
 }
 
 .gradient-border-btn:hover {
-  background: #10b981;
-  border-color: #10b981;
+  background: linear-gradient(135deg, #1877f2 0%, #00a884 100%);
+  border-color: #1877f2;
   color: white;
-  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+  box-shadow: 0 4px 14px rgba(24, 119, 242, 0.3);
 }
 
 /* Live Avatar Identity Box */
@@ -332,8 +353,8 @@ html, body {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background: #e7f3ff40;
+  border: 1px solid #d0e3ff;
   border-radius: var(--radius-md);
   padding: 0.65rem 0.85rem;
   margin-bottom: 1.15rem;
@@ -350,8 +371,8 @@ html, body {
   font-size: 1.1rem;
   font-weight: 700;
   color: white;
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  background: linear-gradient(135deg, #1877f2 0%, #25d366 100%);
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);
   transition: all 0.2s ease;
   user-select: none;
 }
@@ -364,12 +385,12 @@ html, body {
 .avatar-label {
   font-size: 0.825rem;
   font-weight: 700;
-  color: #065f46;
+  color: #1877f2;
 }
 
 .avatar-sub {
   font-size: 0.725rem;
-  color: #64748b;
+  color: #65676b;
 }
 
 /* Form Controls */
@@ -387,8 +408,8 @@ html, body {
 
 .form-group label {
   font-size: 0.825rem;
-  font-weight: 600;
-  color: #334155;
+  font-weight: 700;
+  color: #050505;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -402,7 +423,7 @@ html, body {
 .input-icon {
   position: absolute;
   left: 0.875rem;
-  color: #10b981;
+  color: #1877f2;
   font-weight: 700;
   font-size: 1rem;
   pointer-events: none;
@@ -416,9 +437,9 @@ input[type="text"] {
   width: 100%;
   padding: 0.75rem 1rem;
   background-color: #ffffff;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #ced0d4;
   border-radius: var(--radius-sm);
-  color: #0f172a;
+  color: #050505;
   font-size: 0.95rem;
   font-family: inherit;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
@@ -426,29 +447,29 @@ input[type="text"] {
 
 input[type="text"]:focus {
   outline: none;
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  border-color: #1877f2;
+  box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.25);
 }
 
 input[type="text"]::placeholder {
-  color: #94a3b8;
+  color: #8a8d91;
 }
 
 .input-hint {
   font-size: 0.75rem;
-  color: #64748b;
+  color: #65676b;
 }
 
 /* Glowing Input Wrapper Focus */
 .glowing-input input[type="text"]:focus {
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.25);
+  border-color: #1877f2;
+  box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.25);
 }
 
 /* Collapsible Settings */
 .server-config-toggle {
-  background: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background: #f0f2f5;
+  border: 1px solid #e4e6eb;
   border-radius: var(--radius-sm);
   padding: 0.6rem 0.85rem;
   font-size: 0.825rem;
@@ -456,13 +477,13 @@ input[type="text"]::placeholder {
 
 .server-config-toggle summary {
   cursor: pointer;
-  color: #065f46;
+  color: #1877f2;
   font-weight: 600;
   user-select: none;
 }
 
 .server-config-toggle summary:hover {
-  color: #047857;
+  color: #166fe5;
 }
 
 .config-field {
@@ -470,7 +491,7 @@ input[type="text"]::placeholder {
 }
 
 .config-field code {
-  color: #047857;
+  color: #0d65d9;
   font-weight: 600;
 }
 
@@ -506,13 +527,13 @@ input[type="text"]::placeholder {
 
 .btn-secondary {
   background-color: #ffffff;
-  color: #334155;
-  border: 1px solid #e2e8f0;
+  color: #050505;
+  border: 1px solid #ced0d4;
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background-color: #f1f5f9;
-  color: #0f172a;
+  background-color: #f0f2f5;
+  color: #1877f2;
 }
 
 .btn-block {
@@ -524,28 +545,28 @@ input[type="text"]::placeholder {
   font-size: 0.825rem;
 }
 
-/* Vibrant Action Button in Light Green */
+/* Vibrant Action Button - Fusion of Facebook Blue & WhatsApp Green */
 .btn-vibrant {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  background: linear-gradient(135deg, #1877f2 0%, #00a884 50%, #25d366 100%);
   color: white;
   font-weight: 700;
   font-size: 1rem;
   padding: 0.85rem 1.25rem;
   border-radius: var(--radius-sm);
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+  box-shadow: 0 6px 20px rgba(24, 119, 242, 0.35);
   transition: all var(--transition-fast);
 }
 
 .btn-vibrant:hover:not(:disabled) {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+  background: linear-gradient(135deg, #166fe5 0%, #008f6f 50%, #20ba5a 100%);
+  box-shadow: 0 8px 25px rgba(24, 119, 242, 0.5);
   transform: translateY(-1px);
 }
 
 .icon-btn {
   background: transparent;
   border: none;
-  color: #475569;
+  color: #65676b;
   cursor: pointer;
   padding: 0.5rem;
   display: flex;
@@ -555,11 +576,11 @@ input[type="text"]::placeholder {
 }
 
 .icon-btn:hover {
-  color: #0f172a;
-  background-color: #f1f5f9;
+  color: #1877f2;
+  background-color: #e7f3ff;
 }
 
-/* Feature Highlights Pills */
+/* Feature Highlights Pills (Alternating Facebook & WhatsApp Colors) */
 .feature-pills {
   display: flex;
   align-items: center;
@@ -572,11 +593,17 @@ input[type="text"]::placeholder {
 .feature-pills .pill {
   font-size: 0.7rem;
   font-weight: 600;
-  color: #065f46;
-  background: #ecfdf5;
-  border: 1px solid #a7f3d0;
+  color: #1877f2;
+  background: #e7f3ff;
+  border: 1px solid #cbe5ff;
   padding: 0.2rem 0.55rem;
   border-radius: var(--radius-full);
+}
+
+.feature-pills .pill:nth-child(2) {
+  color: #065f46;
+  background: #ecfdf5;
+  border-color: #bbf7d0;
 }
 
 /* Spinners */
@@ -601,12 +628,13 @@ input[type="text"]::placeholder {
   margin-bottom: 1.25rem;
   background-color: var(--color-danger-bg);
   border: 1px solid var(--color-danger);
-  color: #b91c1c;
+  color: #e41e3f;
+  font-weight: 600;
   animation: shake 0.3s ease;
 }
 
 /* ==========================================================================
-   MAIN CHAT SCREEN LAYOUT (CLEAN WHITE & LIGHT GREEN)
+   MAIN CHAT SCREEN LAYOUT
    ========================================================================== */
 #chat-screen {
   flex-direction: column;
@@ -622,7 +650,7 @@ input[type="text"]::placeholder {
   align-items: center;
   justify-content: space-between;
   padding: 0 1.25rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   z-index: 10;
 }
 
@@ -641,14 +669,14 @@ input[type="text"]::placeholder {
 .header-brand h2 {
   font-size: 1.05rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #1877f2;
   line-height: 1.2;
 }
 
 .connection-status {
   font-size: 0.75rem;
   color: var(--color-online);
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.2;
 }
 
@@ -689,15 +717,15 @@ input[type="text"]::placeholder {
   align-items: center;
   gap: 0.5rem;
   padding: 0.35rem 0.75rem;
-  background-color: #f0fdf4;
-  border: 1px solid #bbf7d0;
+  background-color: #e7f3ff;
+  border: 1px solid #cbe5ff;
   border-radius: var(--radius-full);
 }
 
 .current-user-name {
   font-size: 0.85rem;
-  font-weight: 600;
-  color: #065f46;
+  font-weight: 700;
+  color: #1877f2;
   max-width: 120px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -714,7 +742,7 @@ input[type="text"]::placeholder {
 }
 
 /* ==========================================================================
-   ONLINE USERS SIDEBAR (WHITE & FRESH LIGHT GREEN)
+   ONLINE USERS SIDEBAR
    ========================================================================== */
 .sidebar {
   width: 260px;
@@ -742,13 +770,13 @@ input[type="text"]::placeholder {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #334155;
+  color: #050505;
 }
 
 .user-count-badge {
-  background-color: #ecfdf5;
-  color: #065f46;
-  border: 1px solid #a7f3d0;
+  background-color: #e7f3ff;
+  color: #1877f2;
+  border: 1px solid #cbe5ff;
   font-size: 0.75rem;
   font-weight: 700;
   padding: 0.15rem 0.55rem;
@@ -779,12 +807,12 @@ input[type="text"]::placeholder {
 }
 
 .user-item:hover {
-  background-color: #f0fdf4;
+  background-color: #f0f2f5;
 }
 
 .user-item.is-self {
-  background-color: #ecfdf5;
-  border: 1px solid #bbf7d0;
+  background-color: #e7f3ff;
+  border: 1px solid #cbe5ff;
 }
 
 .user-avatar-wrap {
@@ -806,7 +834,7 @@ input[type="text"]::placeholder {
   flex: 1;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #1e293b;
+  color: #050505;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -814,11 +842,11 @@ input[type="text"]::placeholder {
 
 .self-tag {
   font-size: 0.7rem;
-  background-color: #10b981;
+  background-color: #1877f2;
   color: white;
   padding: 0.1rem 0.35rem;
   border-radius: var(--radius-sm);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* User Avatars */
@@ -833,7 +861,7 @@ input[type="text"]::placeholder {
   font-size: 0.8rem;
   color: white;
   user-select: none;
-  background-color: #10b981;
+  background-color: #1877f2;
 }
 
 .avatar-sm {
@@ -851,7 +879,7 @@ input[type="text"]::placeholder {
   flex-direction: column;
   height: 100%;
   position: relative;
-  background-color: var(--bg-app);
+  background-color: #f0f2f5;
   overflow: hidden;
 }
 
@@ -864,7 +892,8 @@ input[type="text"]::placeholder {
   z-index: 15;
   background-color: var(--color-danger-bg);
   border: 1px solid var(--color-danger);
-  color: #b91c1c;
+  color: #e41e3f;
+  font-weight: 600;
   font-size: 0.85rem;
   padding: 0.5rem 1rem;
   border-radius: var(--radius-full);
@@ -881,13 +910,13 @@ input[type="text"]::placeholder {
   flex-direction: column;
   gap: 0.85rem;
   scroll-behavior: smooth;
-  background-color: #f0fdf4;
+  background-color: #f0f2f5;
 }
 
 .empty-state {
   margin: auto;
   text-align: center;
-  color: #64748b;
+  color: #65676b;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -897,7 +926,7 @@ input[type="text"]::placeholder {
 
 .empty-icon {
   font-size: 2.5rem;
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 /* Message Rows */
@@ -918,7 +947,7 @@ input[type="text"]::placeholder {
   margin-right: auto;
 }
 
-/* Message Bubbles - Clean Light Green & White */
+/* Message Bubbles - WhatsApp Green Outgoing & Facebook White Incoming */
 .message-bubble {
   padding: 0.65rem 0.95rem;
   border-radius: var(--radius-md);
@@ -926,13 +955,13 @@ input[type="text"]::placeholder {
   line-height: 1.45;
   position: relative;
   word-break: break-word;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .message-row.outgoing .message-bubble {
   background-color: var(--outgoing-bg);
   color: var(--outgoing-text);
-  border: 1px solid #bbf7d0;
+  border: 1px solid #bcf4bc;
   border-bottom-right-radius: 2px;
 }
 
@@ -940,7 +969,7 @@ input[type="text"]::placeholder {
   background-color: var(--incoming-bg);
   color: var(--incoming-text);
   border-bottom-left-radius: 2px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #e4e6eb;
 }
 
 .message-header {
@@ -954,20 +983,20 @@ input[type="text"]::placeholder {
 .sender-name {
   font-size: 0.775rem;
   font-weight: 700;
-  color: #047857;
+  color: #1877f2;
 }
 
 .message-row.outgoing .sender-name {
-  color: #065f46;
+  color: #054640;
 }
 
 .message-time {
   font-size: 0.7rem;
-  color: #64748b;
+  color: #8a8d91;
 }
 
 .message-row.outgoing .message-time {
-  color: #059669;
+  color: #00a884;
 }
 
 .message-text {
@@ -986,35 +1015,35 @@ input[type="text"]::placeholder {
   align-items: center;
   gap: 0.4rem;
   background-color: #ffffff;
-  color: #475569;
-  border: 1px solid #e2e8f0;
+  color: #65676b;
+  border: 1px solid #e4e6eb;
   box-shadow: var(--shadow-sm);
   animation: fadeIn 0.2s ease-out;
 }
 
 .system-notification.joined {
-  border-left: 3px solid var(--color-joined);
+  border-left: 3px solid #25d366;
   background-color: #ecfdf5;
   color: #065f46;
 }
 
 .system-notification.left {
-  border-left: 3px solid var(--color-left);
-  background-color: #fff7ed;
-  color: #9a3412;
+  border-left: 3px solid #fa3e3e;
+  background-color: #fef2f2;
+  color: #991b1b;
 }
 
 .system-notification.history-divider {
-  border-left: 3px solid var(--primary);
-  background-color: #ecfdf5;
-  color: #047857;
+  border-left: 3px solid #1877f2;
+  background-color: #e7f3ff;
+  color: #0d65d9;
   font-style: italic;
   font-size: 0.75rem;
 }
 
 .system-notification.error-notice {
   border-left: 3px solid var(--color-danger);
-  color: #b91c1c;
+  color: #e41e3f;
   background-color: var(--color-danger-bg);
 }
 
@@ -1026,12 +1055,12 @@ input[type="text"]::placeholder {
   transform: translateX(-50%);
   z-index: 10;
   background-color: #ffffff;
-  color: #065f46;
-  border: 1px solid #a7f3d0;
+  color: #1877f2;
+  border: 1px solid #cbe5ff;
   border-radius: var(--radius-full);
   padding: 0.4rem 0.85rem;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   display: flex;
   align-items: center;
   gap: 0.4rem;
@@ -1041,13 +1070,13 @@ input[type="text"]::placeholder {
 }
 
 .scroll-bottom-btn:hover {
-  background-color: var(--primary);
-  border-color: var(--primary);
+  background-color: #1877f2;
+  border-color: #1877f2;
   color: white;
 }
 
 /* ==========================================================================
-   CHAT FOOTER & INPUT FORM (WHITE & LIGHT GREEN)
+   CHAT FOOTER & INPUT FORM
    ========================================================================== */
 .chat-footer {
   padding: 0.85rem 1.25rem;
@@ -1069,33 +1098,34 @@ input[type="text"]::placeholder {
   padding: 0.75rem 1.15rem;
   border-radius: var(--radius-full);
   font-size: 0.95rem;
-  background-color: #f8fafc;
-  border: 1px solid #cbd5e1;
-  color: #0f172a;
+  background-color: #f0f2f5;
+  border: 1px solid #ced0d4;
+  color: #050505;
 }
 
 .message-input-wrapper input:focus {
   background-color: #ffffff;
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  border-color: #1877f2;
+  box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.2);
 }
 
 .send-btn {
-  background-color: #10b981;
+  background: linear-gradient(135deg, #1877f2 0%, #00a884 50%, #25d366 100%);
   border-radius: var(--radius-full);
   padding: 0.75rem 1.25rem;
   gap: 0.4rem;
   flex-shrink: 0;
   color: white;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+  box-shadow: 0 2px 8px rgba(24, 119, 242, 0.3);
 }
 
 .send-btn:hover {
-  background-color: #059669;
+  background: linear-gradient(135deg, #166fe5 0%, #008f6f 50%, #20ba5a 100%);
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.45);
 }
 
 /* ==========================================================================
-   MULTI-USER ROOM CHAT SPECIFIC STYLES (WHITE & LIGHT GREEN)
+   MULTI-USER ROOM CHAT SPECIFIC STYLES
    ========================================================================== */
 .nav-link-btn {
   display: inline-flex;
@@ -1103,25 +1133,25 @@ input[type="text"]::placeholder {
   gap: 0.4rem;
   padding: 0.4rem 0.8rem;
   border-radius: var(--radius-sm);
-  background-color: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  color: #065f46;
+  background-color: #e7f3ff;
+  border: 1px solid #cbe5ff;
+  color: #1877f2;
   font-size: 0.825rem;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   transition: all var(--transition-fast);
 }
 
 .nav-link-btn:hover {
-  background-color: #10b981;
-  border-color: #10b981;
+  background: linear-gradient(135deg, #1877f2 0%, #00a884 100%);
+  border-color: #1877f2;
   color: white;
 }
 
 .room-presets-label {
   font-size: 0.775rem;
   font-weight: 700;
-  color: #475569;
+  color: #65676b;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-top: 0.25rem;
@@ -1136,10 +1166,10 @@ input[type="text"]::placeholder {
 
 .room-preset-btn {
   background-color: #ffffff;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #ced0d4;
   border-radius: var(--radius-sm);
   padding: 0.55rem 0.75rem;
-  color: #334155;
+  color: #050505;
   font-size: 0.825rem;
   font-weight: 600;
   cursor: pointer;
@@ -1152,21 +1182,21 @@ input[type="text"]::placeholder {
 }
 
 .room-preset-btn:hover {
-  background-color: #f0fdf4;
-  border-color: #10b981;
-  color: #065f46;
+  background-color: #e7f3ff;
+  border-color: #1877f2;
+  color: #1877f2;
 }
 
 .room-preset-btn.selected {
-  background-color: #ecfdf5;
-  border-color: #10b981;
-  color: #065f46;
+  background-color: #e7f3ff;
+  border-color: #1877f2;
+  color: #1877f2;
   font-weight: 700;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.25);
 }
 
 .room-hash {
-  color: #10b981;
+  color: #1877f2;
   font-weight: 700;
 }
 
@@ -1174,9 +1204,9 @@ input[type="text"]::placeholder {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  background-color: #ecfdf5;
-  border: 1px solid #a7f3d0;
-  color: #065f46;
+  background-color: #e7f3ff;
+  border: 1px solid #cbe5ff;
+  color: #1877f2;
   padding: 0.2rem 0.6rem;
   border-radius: var(--radius-sm);
   font-size: 0.8rem;
@@ -1186,8 +1216,8 @@ input[type="text"]::placeholder {
 
 .room-context-pill {
   font-size: 0.7rem;
-  background-color: #f1f5f9;
-  color: #475569;
+  background-color: #f0f2f5;
+  color: #65676b;
   padding: 0.1rem 0.4rem;
   border-radius: var(--radius-sm);
   margin-left: 0.4rem;
@@ -1259,7 +1289,7 @@ input[type="text"]::placeholder {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(15, 23, 42, 0.4);
+    background-color: rgba(5, 5, 5, 0.4);
     z-index: 18;
     backdrop-filter: blur(2px);
   }
