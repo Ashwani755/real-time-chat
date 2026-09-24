@@ -1,67 +1,59 @@
 /* ==========================================================================
-   CSS VARIABLES & DESIGN SYSTEM - MIDNIGHT SAPPHIRE & ROYAL SLATE THEME
-   Modern, ultra-clean, captivating real-time messaging interface.
+   REAL CHAT - CLEAN MNC ENTERPRISE DESIGN SYSTEM
+   Inspired by Apple, Google Workspace, Slack, Microsoft Teams & Linear.
+   Ultra-clean, neat, modern, and distraction-free corporate background.
    ========================================================================== */
+
 :root {
-  /* Sapphire & Slate Palette */
-  --sapphire-deep: #0f172a;         /* Deep Midnight Slate */
-  --sapphire-dark: #1e293b;         /* Rich Slate Charcoal */
-  --sapphire-navy: #1e3a8a;         /* Deep Royal Navy */
-  --sapphire-mid: #2563eb;          /* Brilliant Sapphire Blue */
-  --sapphire-light: #3b82f6;        /* Bright Sky Cobalt */
-  --sapphire-soft: #60a5fa;         /* Soft Cloud Blue */
-  --sapphire-pale: #eff6ff;         /* Ice Dew Blue */
-  --indigo-accent: #6366f1;         /* Electric Indigo */
-  --indigo-glow: rgba(37, 99, 235, 0.25);
+  /* Clean Corporate Palette */
+  --primary: #2563eb;               /* Enterprise Royal Blue */
+  --primary-hover: #1d4ed8;         /* Deep Corporate Blue */
+  --primary-light: #eff6ff;         /* Soft Blue Tint */
+  --primary-dark: #1e3a8a;          /* Navy Accent */
 
-  /* Theme Primary & Interactive Accents */
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --primary-light: #eff6ff;
-  --primary-dark: #1e3a8a;
-  --accent: #6366f1;
-  --accent-hover: #4f46e5;
-
-  /* Surfaces & Clean Backgrounds */
-  --bg-app: #f1f5f9;                /* Ice Slate Canvas */
+  /* Neutral Enterprise Surfaces */
+  --bg-app: #f8fafc;                /* Crisp Off-White Slate Canvas */
   --bg-surface: #ffffff;            /* Pure Crisp White */
-  --bg-surface-elevated: #f8fafc;
-  --bg-surface-subtle: #f1f5f9;
-  --border-color: #e2e8f0;          /* Crisp Slate Border */
-  --border-focus: #2563eb;          /* Sapphire Focus Ring */
-  
-  /* Typography Colors */
-  --text-main: #0f172a;             /* Obsidian Slate (Maximum Readability) */
-  --text-muted: #475569;            /* Cool Slate Secondary */
-  --text-dim: #94a3b8;              /* Soft Slate Hint */
+  --bg-surface-elevated: #ffffff;
+  --bg-surface-subtle: #f1f5f9;     /* Light Neutral Slate */
+  --border-color: #e2e8f0;          /* Clean 1px Slate Divider */
+  --border-focus: #2563eb;          /* Enterprise Focus Ring */
+  --border-hover: #cbd5e1;
 
-  /* Status Indicators */
-  --color-online: #10b981;
-  --color-offline: #94a3b8;
-  --color-danger: #ef4444;
+  /* Typography Colors (Maximum Contrast & Readability) */
+  --text-main: #0f172a;             /* Deep Charcoal / Slate 900 */
+  --text-muted: #475569;            /* Slate 600 Secondary */
+  --text-dim: #94a3b8;              /* Slate 400 Hint */
+
+  /* Enterprise Status Indicators */
+  --color-online: #10b981;          /* Active Presence Green */
+  --color-offline: #94a3b8;         /* Away / Offline Slate */
+  --color-danger: #ef4444;          /* Alert Red */
   --color-danger-bg: #fef2f2;
   --color-warning: #f59e0b;
   --color-joined: #2563eb;
-  --color-left: #ea580c;
+  --color-left: #64748b;
 
-  /* Chat Message Bubbles */
-  --outgoing-bg: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-  --outgoing-text: #ffffff;
-  --outgoing-time: rgba(255, 255, 255, 0.85);
-  --incoming-bg: #ffffff;
-  --incoming-text: #0f172a;
+  /* Clean Message Bubbles */
+  --outgoing-bg: #2563eb;           /* Clean Solid Enterprise Blue */
+  --outgoing-text: #ffffff;         /* Pure White Text */
+  --outgoing-time: rgba(255, 255, 255, 0.8);
+  --incoming-bg: #f1f5f9;           /* Clean Light Slate Surface */
+  --incoming-text: #0f172a;         /* Deep Charcoal Text */
   --incoming-border: #e2e8f0;
 
-  /* Radii & Elevations */
+  /* Radii & Apple/Stripe-grade Shadows */
   --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
 
-  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
-  --shadow-md: 0 4px 16px rgba(37, 99, 235, 0.1), 0 2px 6px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(37, 99, 235, 0.08);
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 25px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.9);
+
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --transition-fast: 0.15s ease;
   --transition-normal: 0.25s ease;
 }
@@ -96,6 +88,7 @@ html, body {
   display: flex;
   overflow: hidden;
   position: relative;
+  background-color: var(--bg-app);
 }
 
 .screen {
@@ -118,83 +111,68 @@ html, body {
 }
 
 /* ==========================================================================
-   JOIN / LOGIN SCREEN (ATTRACTIVE TWILIGHT AURORA GLASS)
+   JOIN / LOGIN SCREEN (NEAT, CLEAR MNC CORPORATE DESIGN)
    ========================================================================== */
 #join-screen {
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #090e1a 0%, #0f172a 45%, #1e1b4b 100%);
+  background: linear-gradient(180deg, #f8fafc 0%, #edf2f7 100%);
   position: relative;
   overflow: hidden;
   padding: 1.5rem;
 }
 
-/* Ambient Backlight Orbs */
+/* Clean, Minimalist Ambient Tone */
 .ambient-glow {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(120px);
   pointer-events: none;
-  z-index: 1;
+  opacity: 0.45;
 }
 
 .glow-1 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.35) 0%, transparent 70%);
-  top: -15%;
-  left: 10%;
-  animation: floatOrb 16s ease-in-out infinite alternate;
+  width: 400px;
+  height: 400px;
+  background: rgba(37, 99, 235, 0.12);
+  top: -10%;
+  left: 20%;
 }
 
 .glow-2 {
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.32) 0%, transparent 70%);
-  bottom: -15%;
-  right: 10%;
-  animation: floatOrb 20s ease-in-out infinite alternate-reverse;
+  width: 450px;
+  height: 450px;
+  background: rgba(99, 102, 241, 0.09);
+  bottom: -10%;
+  right: 20%;
 }
 
 .glow-3 {
-  width: 350px;
-  height: 350px;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, transparent 70%);
-  top: 40%;
-  right: 20%;
-  animation: floatOrb 12s ease-in-out infinite alternate;
+  display: none;
 }
 
-@keyframes floatOrb {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(40px, 30px) scale(1.08); }
-  100% { transform: translate(-30px, -20px) scale(0.95); }
-}
-
-/* Join Card Glassmorphism */
+/* Enterprise Join Card */
 .join-card {
   width: 100%;
-  max-width: 460px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.95);
+  max-width: 440px;
+  background: #ffffff;
+  border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(226, 232, 240, 0.8);
+  box-shadow: var(--shadow-card);
   padding: 2.25rem 2rem;
   position: relative;
   z-index: 5;
-  animation: cardEntrance 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: cleanFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes cardEntrance {
+@keyframes cleanFadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px) scale(0.97);
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
@@ -207,28 +185,28 @@ html, body {
 .brand-icon-wrapper {
   position: relative;
   display: inline-block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
 }
 
 .brand-icon {
-  width: 68px;
-  height: 68px;
-  border-radius: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   margin: 0 auto;
+  background-color: var(--primary);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
 }
 
 .gradient-glow {
-  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #6366f1 100%);
-  box-shadow: 0 8px 24px var(--indigo-glow);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
 }
 
 .gradient-glow-rooms {
-  background: linear-gradient(135deg, #0f172a 0%, #3b82f6 50%, #6366f1 100%);
-  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
 }
 
 .status-pulse-badge {
@@ -236,32 +214,31 @@ html, body {
   top: -4px;
   right: -8px;
   font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.18rem 0.5rem;
   border-radius: var(--radius-full);
   background: #10b981;
   color: white;
-  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.4);
+  box-shadow: 0 1px 3px rgba(16, 185, 129, 0.3);
 }
 
 .rooms-badge {
-  background: #6366f1;
-  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.4);
+  background: var(--primary);
 }
 
 .gradient-title {
-  font-size: 1.75rem;
+  font-size: 1.65rem;
   font-weight: 800;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   color: #0f172a;
   margin-bottom: 0.35rem;
 }
 
 .brand-subtitle {
   color: var(--text-muted);
-  font-size: 0.925rem;
-  line-height: 1.4;
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .hero-nav-switch {
@@ -278,7 +255,7 @@ html, body {
   text-decoration: none;
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
-  background-color: var(--sapphire-pale);
+  background-color: var(--primary-light);
   border: 1px solid #bfdbfe;
   transition: all var(--transition-fast);
 }
@@ -286,7 +263,6 @@ html, body {
 .nav-link-btn:hover {
   background-color: #dbeafe;
   color: var(--primary-hover);
-  transform: translateY(-1px);
 }
 
 /* Avatar Preview Box */
@@ -302,18 +278,18 @@ html, body {
 }
 
 .avatar-preview {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1d4ed8, #2563eb);
   color: white;
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.15);
 }
 
 .avatar-meta {
@@ -334,7 +310,7 @@ html, body {
   color: var(--text-muted);
 }
 
-/* Forms & Inputs */
+/* Forms & Clean Enterprise Inputs */
 .join-form {
   display: flex;
   flex-direction: column;
@@ -350,7 +326,7 @@ html, body {
 .form-group label {
   font-size: 0.825rem;
   font-weight: 600;
-  color: var(--text-main);
+  color: #1e293b;
   letter-spacing: 0.01em;
 }
 
@@ -359,14 +335,18 @@ html, body {
   display: flex;
   align-items: center;
   background: #ffffff;
-  border: 1px solid var(--border-color);
+  border: 1px solid #cbd5e1;
   border-radius: var(--radius-sm);
   transition: all var(--transition-fast);
 }
 
+.input-wrapper:hover {
+  border-color: #94a3b8;
+}
+
 .input-wrapper:focus-within {
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .input-icon {
@@ -379,7 +359,7 @@ html, body {
 .input-wrapper input {
   width: 100%;
   padding: 0.75rem 0.85rem;
-  font-size: 0.95rem;
+  font-size: 0.925rem;
   border: none;
   background: transparent;
   outline: none;
@@ -424,17 +404,16 @@ html, body {
 }
 
 .room-preset-btn:hover {
-  background: var(--sapphire-pale);
+  background: var(--primary-light);
   border-color: #bfdbfe;
   color: var(--primary);
 }
 
 .room-preset-btn.selected {
-  background: var(--sapphire-pale);
+  background: var(--primary-light);
   border-color: var(--primary);
   color: var(--primary);
   font-weight: 700;
-  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.15);
 }
 
 .room-hash {
@@ -497,7 +476,7 @@ html, body {
 
 .btn-secondary {
   background-color: #ffffff;
-  color: #0f172a;
+  color: #1e293b;
   border: 1px solid var(--border-color);
 }
 
@@ -517,20 +496,19 @@ html, body {
 
 /* Action Button */
 .btn-vibrant {
-  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #3b82f6 100%);
+  background-color: var(--primary);
   color: white;
   font-weight: 700;
-  font-size: 1rem;
-  padding: 0.85rem 1.25rem;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.25rem;
   border-radius: var(--radius-sm);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
   transition: all var(--transition-fast);
 }
 
 .btn-vibrant:hover:not(:disabled) {
-  background: linear-gradient(135deg, #172554 0%, #1d4ed8 50%, #2563eb 100%);
-  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.5);
-  transform: translateY(-1px);
+  background-color: var(--primary-hover);
+  box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
 }
 
 .icon-btn {
@@ -547,7 +525,7 @@ html, body {
 
 .icon-btn:hover {
   color: var(--primary);
-  background-color: var(--sapphire-pale);
+  background-color: var(--primary-light);
 }
 
 /* Feature Pills */
@@ -563,9 +541,9 @@ html, body {
 .feature-pills .pill {
   font-size: 0.72rem;
   font-weight: 600;
-  color: var(--primary);
-  background: var(--sapphire-pale);
-  border: 1px solid #bfdbfe;
+  color: #475569;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
   padding: 0.2rem 0.6rem;
   border-radius: var(--radius-full);
 }
@@ -582,7 +560,7 @@ html, body {
   gap: 0.5rem;
   background-color: var(--color-danger-bg);
   color: var(--color-danger);
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 .alert-banner.hidden {
@@ -590,16 +568,16 @@ html, body {
 }
 
 /* ==========================================================================
-   MAIN CHAT SCREEN (MIDNIGHT SAPPHIRE & BLUEPRINT SLATE)
+   MAIN CHAT SCREEN (NEAT, CLEAR MNC WORKSPACE THEME)
    ========================================================================== */
 #chat-screen {
   flex-direction: column;
-  background-color: var(--bg-app);
+  background-color: #ffffff;
 }
 
-/* Chat Header */
+/* Enterprise Header */
 .chat-header {
-  height: 64px;
+  height: 60px;
   background-color: #ffffff;
   border-bottom: 1px solid var(--border-color);
   padding: 0 1.5rem;
@@ -607,7 +585,6 @@ html, body {
   align-items: center;
   justify-content: space-between;
   z-index: 10;
-  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
 }
 
 .chat-header-left {
@@ -631,7 +608,7 @@ html, body {
 
 .connection-status {
   font-size: 0.775rem;
-  color: #10b981;
+  color: var(--color-online);
   font-weight: 600;
 }
 
@@ -640,16 +617,14 @@ html, body {
 }
 
 .header-status-indicator {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+  background-color: var(--color-online);
 }
 
 .header-status-indicator.offline {
   background-color: var(--color-offline);
-  box-shadow: none;
 }
 
 .chat-header-right {
@@ -686,7 +661,7 @@ html, body {
   font-size: 0.8rem;
   color: white;
   user-select: none;
-  background: linear-gradient(135deg, #2563eb, #6366f1);
+  background-color: var(--primary);
 }
 
 .avatar-sm {
@@ -702,12 +677,12 @@ html, body {
   flex: 1;
   display: flex;
   overflow: hidden;
-  height: calc(100vh - 64px);
+  height: calc(100vh - 60px);
 }
 
 .sidebar {
   width: 260px;
-  background-color: #ffffff;
+  background-color: #f8fafc;
   border-right: 1px solid var(--border-color);
   display: flex;
   flex-direction: column;
@@ -724,19 +699,19 @@ html, body {
 }
 
 .sidebar-header h3 {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--text-muted);
+  color: #64748b;
 }
 
 .user-count-badge {
-  background-color: var(--sapphire-pale);
-  color: var(--primary);
-  font-size: 0.75rem;
+  background-color: #e2e8f0;
+  color: #334155;
+  font-size: 0.725rem;
   font-weight: 700;
-  padding: 0.15rem 0.55rem;
+  padding: 0.15rem 0.5rem;
   border-radius: var(--radius-full);
 }
 
@@ -744,14 +719,14 @@ html, body {
   flex: 1;
   overflow-y: auto;
   padding: 0.75rem;
-  background-color: #ffffff;
+  background-color: #f8fafc;
 }
 
 .users-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.25rem;
 }
 
 .user-item {
@@ -764,12 +739,11 @@ html, body {
 }
 
 .user-item:hover {
-  background-color: #f8fafc;
+  background-color: #e2e8f0;
 }
 
 .user-item.is-self {
-  background-color: var(--sapphire-pale);
-  border: 1px solid #bfdbfe;
+  background-color: #e0f2fe;
 }
 
 .user-avatar-wrap {
@@ -790,8 +764,8 @@ html, body {
 .user-name-text {
   flex: 1;
   font-size: 0.875rem;
-  font-weight: 600;
-  color: #0f172a;
+  font-weight: 500;
+  color: #1e293b;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -803,11 +777,11 @@ html, body {
   color: white;
   padding: 0.1rem 0.35rem;
   border-radius: var(--radius-sm);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 /* ==========================================================================
-   CHAT MAIN CONTAINER & CLEAN GEOMETRIC SLATE WALLPAPER
+   CHAT MAIN CONTAINER (NEAT & CLEAR BACKGROUND)
    ========================================================================== */
 .chat-main {
   flex: 1;
@@ -815,7 +789,7 @@ html, body {
   flex-direction: column;
   height: 100%;
   position: relative;
-  background-color: #f1f5f9;
+  background-color: #ffffff;
   overflow: hidden;
 }
 
@@ -833,57 +807,49 @@ html, body {
   font-size: 0.85rem;
   padding: 0.5rem 1rem;
   border-radius: var(--radius-full);
-  box-shadow: var(--shadow-md);
-  animation: slideDown 0.25s ease-out;
+  box-shadow: var(--shadow-sm);
+  animation: slideDown 0.2s ease-out;
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translate(-50%, -10px); }
+  from { opacity: 0; transform: translate(-50%, -8px); }
   to { opacity: 1; transform: translate(-50%, 0); }
 }
 
-/* Messages Container - Attractive Twilight Cosmic Dusk with Radiant Ambient Glow & Vector Chat Doodle Wallpaper */
+/* Messages Container - Neat, Clear, Professional MNC Background */
 .messages-container {
   flex: 1;
   overflow-y: auto;
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 1rem;
   scroll-behavior: smooth;
-  background-color: #0c1222;
-  background-image: 
-    /* Ambient Radiant Center Glow */
-    radial-gradient(ellipse 90% 50% at 50% 20%, rgba(99, 102, 241, 0.22) 0%, rgba(12, 18, 34, 0) 80%),
-    /* Deep Twilight Cobalt Gradient */
-    linear-gradient(160deg, #090e1a 0%, #0f182e 35%, #161c38 70%, #0d1324 100%),
-    /* High-Definition Aesthetic Chat Vector Wallpaper */
-    url("data:image/svg+xml,%3Csvg width='280' height='280' viewBox='0 0 280 280' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2360a5fa' fill-opacity='0.08'%3E%3C!-- Chat Speech Bubble (40, 30) --%3E%3Cpath d='M40 20c-11 0-20 7-20 16 0 5 3 10 8 13l-3 8 9-4c2 .6 4 1 6 1 11 0 20-7 20-16s-9-16-20-16zm-5 13c1.5 0 3 1.2 3 2.5s-1.5 2.5-3 2.5-3-1.2-3-2.5 1.5-2.5 3-2.5zm10 0c1.5 0 3 1.2 3 2.5s-1.5 2.5-3 2.5-3-1.2-3-2.5 1.5-2.5 3-2.5zm10 0c1.5 0 3 1.2 3 2.5s-1.5 2.5-3 2.5-3-1.2-3-2.5 1.5-2.5 3-2.5z'/%3E%3C!-- Flying Paper Airplane (180, 40) --%3E%3Cpath d='M165 30l35 15-20 18-5-8 12-10-18 6-4-15-20-6z'/%3E%3C!-- Twinkling Star (110, 45) --%3E%3Cpath d='M110 35l2.5 7.5 7.5 2.5-7.5 2.5-2.5 7.5-2.5-7.5-7.5-2.5 7.5-2.5z'/%3E%3C!-- Musical Note (240, 50) --%3E%3Cpath d='M240 35v16c-1-.5-2-.8-3.5-.8-3.5 0-6.5 2.5-6.5 5.5s3 5.5 6.5 5.5 6.5-2.5 6.5-5.5V41h8v-6h-11z'/%3E%3C!-- Heart Outline (60, 110) --%3E%3Cpath d='M60 100c-4-5-11-5-15 0-4 4-3 11 2 16l13 13 13-13c5-5 6-12 2-16-4-5-11-5-15 0z'/%3E%3C!-- Headphones (160, 115) --%3E%3Cpath d='M160 100c-9 0-16 7-16 16v8h5v-8c0-6 5-11 11-11s11 5 11 11v8h5v-8c0-9-7-16-16-16zm-14 18h4v8h-4zm24 0h4v8h-4z'/%3E%3C!-- Sparkle (235, 120) --%3E%3Cpath d='M235 110l2 6 6 2-6 2-2 6-2-6-6-2 6-2z'/%3E%3C!-- Coffee Cup (35, 180) --%3E%3Cpath d='M25 175h22v14c0 4-3 7-7 7h-8c-4 0-7-3-7-7v-14zm24 3h4c2 0 4 1.5 4 3.5s-2 3.5-4 3.5h-4v-7zm-27 21h28v2h-28z'/%3E%3C!-- Location Pin (120, 185) --%3E%3Cpath d='M120 170c-6.5 0-12 5.5-12 12 0 9 12 18 12 18s12-9 12-18c0-6.5-5.5-12-12-12zm0 8a4 4 0 1 1 0 8 4 4 0 0 1 0-8z'/%3E%3C!-- Smiley Face (210, 190) --%3E%3Cpath d='M210 175c-10 0-18 8-18 18s8 18 18 18 18-8 18-18-8-18-18-18zm-6 12a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm12 0a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zm-6 15c-4 0-7.5-2.5-9-6h18c-1.5 3.5-5 6-9 6z'/%3E%3C!-- Planet with Ring (70, 245) --%3E%3Cpath d='M70 235c-6 0-11 5-11 11s5 11 11 11 11-5 11-11-5-11-11-11zm-15 11c0-1.5 7-4 15-4s15 2.5 15 4-7 4-15 4-15-2.5-15-4z'/%3E%3C!-- Speech Bubble Oval (165, 250) --%3E%3Cpath d='M165 235c-9 0-16 5.5-16 12.5 0 4 2.5 7.5 6.5 10l-2 6 7-3c1.5.5 3 .5 4.5.5 9 0 16-5.5 16-12.5s-7-12.5-16-12.5z'/%3E%3C!-- Soft Starlight Dots --%3E%3Ccircle cx='95' cy='90' r='2'/%3E%3Ccircle cx='185' cy='75' r='1.5'/%3E%3Ccircle cx='135' cy='145' r='2.5'/%3E%3Ccircle cx='260' cy='160' r='2'/%3E%3Ccircle cx='30' cy='135' r='1.5'/%3E%3Ccircle cx='105' cy='225' r='2'/%3E%3Ccircle cx='235' cy='240' r='2'/%3E%3Ccircle cx='270' cy='270' r='1.5'/%3E%3Ccircle cx='15' cy='265' r='2'/%3E%3C/g%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 280px 280px;
+  background-color: #ffffff;
+  /* Pristine clean background - distraction-free */
 }
 
+/* Clean Empty State */
 .empty-state {
   margin: auto;
   text-align: center;
-  color: #94a3b8;
+  color: var(--text-muted);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.65rem;
-  padding: 2rem 2.4rem;
-  background: rgba(15, 23, 42, 0.78);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-md);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-  max-width: 400px;
+  gap: 0.5rem;
+  padding: 2rem;
+  max-width: 360px;
 }
 
 .empty-icon {
-  font-size: 2.5rem;
-  opacity: 0.85;
+  font-size: 2.25rem;
+  color: var(--text-dim);
+}
+
+.empty-state p {
+  font-size: 0.925rem;
+  line-height: 1.5;
 }
 
 /* Message Rows */
@@ -891,12 +857,12 @@ html, body {
   display: flex;
   align-items: flex-end;
   gap: 0.65rem;
-  max-width: 80%;
-  animation: fadeIn 0.2s ease-out;
+  max-width: 75%;
+  animation: messageFade 0.15s ease-out;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(6px); }
+@keyframes messageFade {
+  from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -909,28 +875,29 @@ html, body {
   margin-right: auto;
 }
 
-/* Message Bubbles */
+/* Clean Message Bubbles */
 .message-bubble {
-  padding: 0.7rem 1rem;
+  padding: 0.75rem 1.05rem;
   border-radius: var(--radius-md);
   font-size: 0.925rem;
-  line-height: 1.45;
+  line-height: 1.5;
   position: relative;
   word-break: break-word;
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
 }
 
+/* Outgoing Bubble - Clean Enterprise Blue */
 .message-row.outgoing .message-bubble {
-  background: var(--outgoing-bg);
+  background-color: var(--outgoing-bg);
   color: var(--outgoing-text);
-  border-bottom-right-radius: 2px;
-  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.25);
+  border-bottom-right-radius: 3px;
+  box-shadow: 0 1px 2px rgba(37, 99, 235, 0.15);
 }
 
+/* Incoming Bubble - Clean Light Neutral Surface */
 .message-row.incoming .message-bubble {
   background-color: var(--incoming-bg);
   color: var(--incoming-text);
-  border-bottom-left-radius: 2px;
+  border-bottom-left-radius: 3px;
   border: 1px solid var(--incoming-border);
 }
 
@@ -939,7 +906,7 @@ html, body {
   align-items: baseline;
   justify-content: space-between;
   gap: 0.75rem;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.2rem;
 }
 
 .sender-name {
@@ -969,32 +936,27 @@ html, body {
 /* System Notifications */
 .system-notification {
   align-self: center;
-  margin: 0.4rem auto;
+  margin: 0.35rem auto;
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.35rem 0.95rem;
-  background-color: rgba(15, 23, 42, 0.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.3rem 0.85rem;
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
   border-radius: var(--radius-full);
-  font-size: 0.775rem;
-  color: #cbd5e1;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 .system-notification.joined {
-  border-color: rgba(59, 130, 246, 0.4);
-  color: #60a5fa;
+  color: var(--primary);
 }
 
 .system-notification.left {
-  border-color: rgba(249, 115, 22, 0.4);
-  color: #fb923c;
+  color: #64748b;
 }
 
-/* Scroll Bottom Helper */
+/* Scroll Bottom Helper Button */
 .scroll-bottom-btn {
   position: absolute;
   bottom: 85px;
@@ -1016,8 +978,7 @@ html, body {
 }
 
 .scroll-bottom-btn:hover {
-  background-color: var(--sapphire-pale);
-  transform: translateY(-2px);
+  background-color: var(--primary-light);
 }
 
 .scroll-bottom-btn.hidden {
@@ -1044,15 +1005,19 @@ html, body {
 
 .message-input-wrapper input {
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1.15rem;
   background-color: #f8fafc;
-  border: 1px solid var(--border-color);
+  border: 1px solid #cbd5e1;
   border-radius: var(--radius-full);
   font-size: 0.925rem;
   color: var(--text-main);
   outline: none;
   font-family: inherit;
   transition: all var(--transition-fast);
+}
+
+.message-input-wrapper input:hover {
+  border-color: #94a3b8;
 }
 
 .message-input-wrapper input:focus {
@@ -1067,19 +1032,17 @@ html, body {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  font-weight: 600;
+  font-size: 0.9rem;
+  background-color: var(--primary);
   color: white;
   border: none;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
 .send-btn:hover {
-  background: linear-gradient(135deg, #172554 0%, #1d4ed8 100%);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+  background-color: var(--primary-hover);
 }
 
 /* Mobile & Drawer Breakpoints */
@@ -1108,12 +1071,16 @@ html, body {
   .sidebar-overlay {
     position: absolute;
     inset: 0;
-    background-color: rgba(15, 23, 42, 0.4);
+    background-color: rgba(15, 23, 42, 0.3);
     z-index: 4;
   }
 
   .sidebar-overlay.hidden {
     display: none;
+  }
+
+  .messages-container {
+    padding: 1rem;
   }
 
   .message-row {
